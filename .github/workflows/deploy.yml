@@ -75,7 +75,8 @@ jobs:
           debug -o $RUNNER_TEMP/lftp.log 4
           set sftp:auto-confirm no
           set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
-          mirror -R $FLAGS "dist/$SITE" "$REMOTE_DIR"
+          lcd "dist/$SITE"
+          mirror -R $FLAGS . "${REMOTE_DIR%/}"
           quit
           LFTP
           sed -i 's/^ *//' "$RUNNER_TEMP/deploy.lftp"
