@@ -119,6 +119,6 @@ One section per person: a `##` heading with the name, a bullet for each detail, 
 - leads:
 - titles:
   - Consultant Children's Anaesthetist, East and North Hertfordshire NHS Teaching Trust
-- image:
+- image: https://www.csap.cam.ac.uk/wp-content/uploads/2025/06/laura-hobbs-163x173-1-e1750151336191.jpg
 - profile_url:
 - order: 9
