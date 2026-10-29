@@ -312,7 +312,8 @@ a.tag-pill { text-decoration: none; }
 a.tag-pill:hover { background: var(--ink); color: var(--paper); }
 .person .foot-row { margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--line); display: grid; gap: 0.7rem; }
 .person .foot-row:empty { display: none; }
-.person .tags { margin: 0; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+.person .tags { margin: 0; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 0.4rem; }
+.person .tags li:has(> .tag-pill:not(.sig)) { flex-basis: 100%; }
 .person .tags li { max-width: 100%; display: flex; }
 .person .tag-pill { max-width: 100%; white-space: nowrap; }
 .person .tag-pill .t { overflow: hidden; text-overflow: ellipsis; }
