@@ -77,4 +77,4 @@ jobs:
           quit
           LFTP
           sed -i 's/^ *//' "$RUNNER_TEMP/deploy.lftp"
-          lftp -f "$RUNNER_TEMP/deploy.lftp" -u "$SFTP_USER,$SFTP_PASSWORD" "sftp://$SFTP_HOST:$SFTP_PORT"
+          lftp -u "$SFTP_USER,$SFTP_PASSWORD" -e "source $RUNNER_TEMP/deploy.lftp" "sftp://$SFTP_HOST:$SFTP_PORT"
