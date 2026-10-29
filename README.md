@@ -1,7 +1,7 @@
 # Cambridge Centre for Healthcare Innovation: website
 
 A static site. Everything people edit is a plain text file. Every change to `main` is built and
-uploaded to the web server over FTP by GitHub Actions.
+uploaded to the web server over SFTP by GitHub Actions.
 
 ## Layout
 
@@ -12,31 +12,30 @@ uploaded to the web server over FTP by GitHub Actions.
 | `sites/cambridge/` | The Cambridge blue design: `template.html`, `site.json`, `icons/`. |
 | `sites/classic/` | The original colourful design, same structure. |
 | `build.py` | Builds one design into `dist/<name>/`. |
-| `.github/workflows/deploy.yml` | The automatic build and FTP upload. |
+| `.github/workflows/deploy.yml` | The automatic build and upload to the server. |
 
 Both designs read the same `content/` and `img/`, so a content change shows up in either one.
 
 ## One-time setup
 
-1. **Push this folder to the repo** (`brangsmith/cchi.org.uk`, branch `main`).
-2. **Add the FTP details** as secrets: repo > Settings > Secrets and variables > Actions > *Secrets* > New repository secret.
-   - `FTP_SERVER`: the host name only, for example `ftp.example.ac.uk` (no `ftp://`)
-   - `FTP_USERNAME`
-   - `FTP_PASSWORD`
-3. **Optional settings** as variables (same page, *Variables* tab). Leave them out to use the defaults.
-
-   | Variable | Default | Use |
-   | --- | --- | --- |
-   | `SITE` | `cambridge` | Which design goes live: `cambridge` or `classic`. |
-   | `FTP_DIR` | `./` | Folder on the server. Must end in `/`, for example `public_html/` or `chi-test/`. |
-   | `FTP_PROTOCOL` | `ftps` | `ftps` (explicit TLS), `ftps-legacy` (implicit TLS) or `ftp` (no encryption, last resort). |
-   | `FTP_PORT` | `21` | Change only if your host says so. |
-
-4. **Try it safely first.** Actions tab > *Build and deploy website* > Run workflow. It defaults to a
-   *dry run*, which lists what would be uploaded and changes nothing on the server.
-5. **First real upload to a test folder.** Set `FTP_DIR` to something like `chi-test/`, run the workflow
-   again with the dry run box unticked, and check the site there. When it looks right, set `FTP_DIR`
-   to the real folder (or delete the variable) and push any change, or run it once more.
+1. **Add the login** (repo > Settings > Secrets and variables > Actions > *Secrets* > New repository secret).
+   The names start `FTP_` for historical reasons; the values are your SFTP details:
+   - `FTP_SERVER`: `pallas.mythic-beasts.com` (host name only)
+   - `FTP_USERNAME`: `ihsg`
+   - `FTP_PASSWORD`: the SFTP password
+2. **Add the variables** (same page, *Variables* tab):
+   - `FTP_DIR`: `www/www.cchi.org.uk/` (relative to the login folder, `/home/ihsg`; keep the trailing `/`)
+   - `SFTP_KNOWN_HOSTS`: the output of this command run in Terminal on your Mac. It makes the upload refuse to
+     talk to anything that isn't your server:
+     ```
+     ssh-keyscan pallas.mythic-beasts.com
+     ```
+   - Optional: `SITE` (`cambridge` or `classic`, default `cambridge`), `SFTP_PORT` (default `22`),
+     `DELETE_REMOVED` (`true` to also delete server files that are no longer in the repo; default `false`)
+3. **Try it safely.** Actions tab > *Build and deploy website* > Run workflow. It defaults to a *dry run*, which
+   lists what would be uploaded and changes nothing on the server.
+4. **Go live.** Run it again with the dry run box unticked, then check the site. From then on every commit to
+   `main` deploys by itself.
 
 ## Day to day
 
@@ -64,9 +63,7 @@ python3 -m http.server -d dist/cambridge 8000   # then open http://localhost:800
 
 ## Good to know
 
-- The upload only sends files that changed since last time. It records what it sent in
-  `.ftp-deploy-sync-state.json` on the server, and only ever deletes files it put there itself.
-  Anything you upload to the server by hand is left alone. Don't delete that file.
-- Never put the FTP password in a file in this repo. It lives only in GitHub secrets.
+- Every deploy sends the whole site (about 4 MB), so what is online always matches the repo.
+- By default nothing is ever deleted on the server. Files you upload by hand are left alone, and so are pages you remove from the repo. Turn on `DELETE_REMOVED` only when this folder holds nothing but the website.
+- Never put a password in a file in this repo. It lives only in GitHub secrets.
 - `dist/` is created by the build and is not stored in git.
-- If the host only allows SFTP/SSH rather than FTP, the upload step needs swapping for an rsync/SFTP one.
