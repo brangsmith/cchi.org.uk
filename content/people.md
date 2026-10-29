@@ -99,13 +99,26 @@ One section per person: a `##` heading with the name, a bullet for each detail, 
 
 ## Dr Brandon G. Smith
 
-- subtitle: Postdoctoral Researcher in Healthcare Innovation
+- subtitle: CHI Teaching Associate
 - category: researcher
 - groups: International Health Systems Group
 - sigs: SCAN; HELM; Amulet
 - leads:
 - titles:
-  - CHI Teaching Associate
+  - Postdoctoral Researcher in Healthcare Innovation
 - image: img/people/smith.jpg
-- profile_url:
+- profile_url: https://www.linkedin.com/in/brangsmith
 - order: 8
+
+## Dr Laura Hobbs
+
+- subtitle: Postdoctoral Researcher
+- category: researcher
+- groups: International Health Systems Group
+- sigs: SCAN
+- leads:
+- titles:
+  - Consultant Children's Anaesthetist, East and North Hertfordshire NHS Teaching Trust
+- image:
+- profile_url:
+- order: 9
