@@ -63,14 +63,16 @@ jobs:
           sudo apt-get install -y -qq lftp
           install -d -m 700 ~/.ssh
           printf '%s\n' "$SFTP_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          FLAGS="--parallel=3 --verbose --no-perms"
+          FLAGS="--verbose --no-perms"
           [ "$DRY_RUN" = "true" ] && FLAGS="$FLAGS --dry-run"
           [ "$DELETE_REMOVED" = "true" ] && FLAGS="$FLAGS --delete"
           # The password goes in through -u (not into the script), so lftp never parses it as a command.
           cat > "$RUNNER_TEMP/deploy.lftp" <<LFTP
           set cmd:fail-exit yes
-          set net:max-retries 2
+          set net:max-retries 6
+          set net:reconnect-interval-base 5
           set net:timeout 30
+          debug -o $RUNNER_TEMP/lftp.log 4
           set sftp:auto-confirm no
           set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
           mirror -R $FLAGS "dist/$SITE" "$REMOTE_DIR"
@@ -78,3 +80,7 @@ jobs:
           LFTP
           sed -i 's/^ *//' "$RUNNER_TEMP/deploy.lftp"
           lftp -u "$SFTP_USER,$SFTP_PASSWORD" -e "source $RUNNER_TEMP/deploy.lftp" "sftp://$SFTP_HOST:$SFTP_PORT"
+
+      - name: Show the server's side of the conversation (only if the upload failed)
+        if: failure() && github.event_name != 'pull_request'
+        run: tail -n 120 "$RUNNER_TEMP/lftp.log" || true
