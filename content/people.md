@@ -99,13 +99,14 @@ One section per person: a `##` heading with the name, a bullet for each detail, 
 
 ## Dr Brandon G. Smith
 
-- subtitle: CHI Teaching Associate
+- subtitle: CHI Postdoctoral Researcher
 - category: researcher
 - groups: International Health Systems Group
 - sigs: SCAN; HELM; Amulet
 - leads:
 - titles:
   - Postdoctoral Researcher in Healthcare Innovation
+  - CHI Teaching Associate
 - image: img/people/smith.jpg
 - profile_url: https://www.linkedin.com/in/brangsmith
 - order: 8
