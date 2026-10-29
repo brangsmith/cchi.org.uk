@@ -7,7 +7,7 @@ uploaded to the web server over SFTP by GitHub Actions.
 
 | Path | What it is |
 | --- | --- |
-| `content/` | All the words: people, news, events, SIGs, testimonials, site settings. Edit these. See `content/README.md`. |
+| `content/` | All the words: people, news, events, SIGs, testimonials, site settings, search descriptions. Edit these. See `content/README.md`. |
 | `img/` | Shared images, logos, people photos and the home page video. |
 | `sites/cambridge/` | The Cambridge blue design: `template.html`, `site.json`, `icons/`. |
 | `sites/classic/` | The original colourful design, same structure. |
@@ -60,6 +60,14 @@ python3 -m http.server -d dist/cambridge 8000   # then open http://localhost:800
 ```
 
 (Opening `index.html` straight from disk won't load the content files; use the small server above.)
+
+## Web addresses and search
+
+- Every page has a real address with no `#`: `/research/`, `/people/`, `/mst/`, `/news/3/`, `/research/scan/` and so on. The build makes a page for each one, with its own title, description and social preview.
+- Old links such as `https://www.cchi.org.uk/#research` still work and are tidied to the new address.
+- The build also writes `sitemap.xml` and `robots.txt`. The site address they use is `base_url` in `sites/<name>/site.json`.
+- The descriptions of the fixed pages are in `content/seo.md`. News items and groups use their own summary.
+- `404.html` is the "page not found" page. Set it as the host's 404 page if the host has that setting.
 
 ## Good to know
 

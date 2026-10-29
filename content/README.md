@@ -10,6 +10,7 @@ content/
   events.md          upcoming events, one section each
   news/001.md ...    one numbered file per news item or blog post
   sigs/001.md ...    one numbered file per special interest group
+  seo.md             the short description of each page for search results and sharing
 ```
 
 ## The format
@@ -205,7 +206,7 @@ The article text starts here.
 | featured | `true` to make it the big card on the home page. Only the latest five items are looked at, and the newest featured one wins |
 | image | Optional image for the card, for example `content/news/007/group.jpg`. Landscape (16:9) works best. Use at least 1600 px wide, as a JPG or WebP under about 300 KB: a small image will look soft when shown large. On the big home card it sits to the right of the text, on all other cards at the bottom |
 | image_alt | Describes the image for screen readers. Needed whenever there is an image |
-| link | Leave out for an article written in the text below. Put a web address starting `http` to link to another site, which opens in a new tab. Start with `#` (for example `#education`) for a page on this site. An item with a link needs no text |
+| link | Leave out for an article written in the text below. Put a web address starting `http` to link to another site, which opens in a new tab. Start with `/` (for example `/mst/` or `/people/`) for a page on this site. An item with a link needs no text |
 | when | Optional text shown in place of the date, for example `11 to 15 Jan 2027` for an event |
 | hidden | `true` to hide the item without deleting it |
 
@@ -231,6 +232,14 @@ One numbered file per special interest group, in the same way as news: `001.md`,
 | logo_alt | The words in the logo, for screen readers, for example `SCAN: Spatial Computing Assisted Neuronavigation`. Without one the group's name is used |
 
 The team on a group's page, and the faces and count on its card, come from the `sigs` detail in `people.md`. A person is matched by the group's short name or full name, so `SCAN` and `Spatial Computing Assisted Neuronavigation` both work.
+
+## Page addresses
+
+Pages have their own addresses: `/research/`, `/people/`, `/mst/`, `/cebc/`, `/news/`, `/contact/`. A news item is `/news/3/` (the number of its file) and a special interest group is `/research/` plus its short name in lower case, for example `/research/scan/`. When a link in an item points at another page on this site, write the address, for example `/mst/`. Old-style links such as `#education` still work.
+
+## seo.md
+
+One section per page, each with a `description`: the short text search engines show under the page title and that appears when the page is shared. One or two sentences, under about 160 characters. News items and special interest groups use their own `summary`, and the page title comes from the item's heading.
 
 ## Putting it on a web server
 
