@@ -1,0 +1,56 @@
+name: Build and deploy website
+
+# Every change to main is built and uploaded over FTP.
+# Pull requests only build, so you can check a change before it goes live.
+# Run it by hand from the Actions tab to do a dry run (lists what would change, uploads nothing).
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**/README.md"]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: list the changes but upload nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Which version of the site goes live: "cambridge" or "classic" (folders in sites/).
+      # Change it without editing this file: Settings > Secrets and variables > Actions > Variables > SITE
+      SITE: ${{ vars.SITE || 'cambridge' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: python3 build.py "$SITE"
+
+      - name: Check the build
+        run: |
+          test -s "dist/$SITE/index.html"
+          test -d "dist/$SITE/content"
+          ! grep -q "__CHI__" "dist/$SITE/index.html"
+
+      - name: Upload to the web server (FTP)
+        if: github.event_name != 'pull_request'
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || '21' }}
+          local-dir: ./dist/${{ env.SITE }}/
+          server-dir: ${{ vars.FTP_DIR || './' }}
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}

@@ -1,0 +1,1412 @@
+<title>Cambridge Centre for Healthcare Innovation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap">
+<style>
+/* Concept: colour-field pages. The chi logomark is blown up and cropped at the edge of every page header, so the logo becomes the site's graphic language. Type is big and blunt, copy is short. Light by default, dark on request. Accessibility target: WCAG 2.2 AA. */
+:root {
+  --i-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M13 5l7 7-7 7'/%3E%3C/svg%3E"); --i-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 18L18 6M8 6h10v10'/%3E%3C/svg%3E"); --i-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H4M11 5l-7 7 7 7'/%3E%3C/svg%3E");
+  /* colour: Cambridge blue (#A3C1AD) family + deep green neutrals */
+  --cam: #A3C1AD;
+  --blue: #A3C1AD;
+  --amber: #D9C07F;
+  --pink: #D98B78;
+  --green: #5F9C94;
+  --paper: #f3f6f2;
+  --paper-2: #e4ece6;
+  --card: #ffffff;
+  --ink: #0e1f19;
+  --mute: #41584d;
+  --line: #bccdc2;
+  --link: #1d5440;
+  --focus: #8a3d00;
+  --night: #0f241d;
+  --night-ink: #eef5f0;
+  --night-mute: #b2c6b9;
+  --night-line: #33524a;
+  --on-blue: #0e1f19;
+  --on-warm: #0e1f19;
+  --chi-grad: linear-gradient(160deg, #2b665d 0%, #5F9C94 42%, #8db39b 72%, #b3943f 100%);
+  /* type */
+  --head: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --logo-serif: 'Newsreader', Georgia, serif;
+  --chi: url("data:image/svg+xml;base64,__CHI__");
+}
+:root[data-theme="dark"] {
+  --paper: #0a1511; --paper-2: #112019; --card: #0f1d17; --ink: #e8f1ec; --mute: #a8bcb0; --line: #2b4137; --link: #A3C1AD; --focus: #f0cf84;
+  --night: #0f241d; --night-line: #34554a;
+  --chi-grad: linear-gradient(160deg, var(--green) 0%, var(--cam) 42%, #d2e4d8 72%, var(--amber) 100%);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+.night :focus-visible, .foot :focus-visible { outline-color: #f0cf84; }
+h1, h2, h3 { font-family: var(--head); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -80px; z-index: 50; background: var(--ink); color: var(--paper); font-family: var(--head); font-weight: 700; font-size: 0.9rem; padding: 0.8em 1.2em; border-radius: 8px; text-decoration: none; }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.small-cap { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.lede { font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.45; max-width: 38ch; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; gap: 0.6em; padding: 0.7em 1.5em; border-radius: 999px; font-family: var(--head); font-size: 0.88rem; font-weight: 700; text-decoration: none; cursor: pointer; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); transition: transform .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--paper); }
+.night .btn { background: var(--night-ink); color: var(--night); border-color: var(--night-ink); }
+.night .btn.ghost { background: transparent; color: var(--night-ink); }
+.night .btn.ghost:hover { background: var(--night-ink); color: var(--night); }
+.arr::after, .back::before, a[target="_blank"]:not(.btn)::after { content: ""; display: inline-block; flex: none; width: 1em; height: 1em; background: currentColor; -webkit-mask: var(--m, var(--i-right)) center / contain no-repeat; mask: var(--m, var(--i-right)) center / contain no-repeat; }
+.arr::after { transition: transform .15s ease; vertical-align: -0.14em; }
+.btn .arr::after { margin-left: 0.5em; }
+.btn:hover .arr::after, a:hover .arr::after { transform: translateX(4px); }
+.tlink { display: inline-block; font-family: var(--head); font-size: 0.88rem; font-weight: 700; color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; padding-block: 0.3rem; }
+.tlink:hover { text-decoration-color: var(--pink); }
+.night .tlink, .foot .tlink { color: var(--night-ink); }
+a[target="_blank"]:not(.btn)::after { --m: var(--i-up); width: 0.8em; height: 0.8em; margin-left: 0.3em; vertical-align: -0.02em; }
+
+/* header */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; padding-block: 0.4rem; }
+.mark { width: 38px; aspect-ratio: 276 / 310; background: var(--chi-grad); -webkit-mask: var(--chi) center / contain no-repeat; mask: var(--chi) center / contain no-repeat; flex: none; }
+.lockup { display: grid; line-height: 1; }
+.lockup i { font-family: var(--logo-serif); font-size: 1rem; font-weight: 400; }
+.lockup b { font-family: var(--head); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; }
+.nav { display: flex; align-items: center; gap: 0.2rem; }
+.nav a, .theme { font-family: var(--head); font-size: 0.84rem; font-weight: 600; text-decoration: none; padding: 0.65em 0.95em; min-height: 40px; display: inline-flex; align-items: center; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
+.nav a:hover, .theme:hover { background: var(--paper-2); border-radius: 999px; }
+.nav a[aria-current="page"] { box-shadow: inset 0 -4px 0 var(--pink); border-radius: 0; font-weight: 700; }
+.theme { border: 1.5px solid var(--ink); border-radius: 50%; margin-left: 0.4rem; gap: 0.6em; padding: 0; width: 44px; height: 44px; justify-content: center; }
+.theme:hover { border-radius: 50%; }
+.theme .i-sun, :root[data-theme="dark"] .theme .i-moon { display: none; }
+:root[data-theme="dark"] .theme .i-sun { display: block; }
+.theme .tt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.menu-btn { display: none; font-family: var(--head); font-weight: 700; font-size: 0.84rem; min-height: 44px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; padding: 0.5em 1.2em; cursor: pointer; }
+@media (max-width: 900px) {
+  .menu-btn { display: inline-block; }
+  .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 0.4rem max(16px, env(safe-area-inset-right, 0px)) 1.2rem max(16px, env(safe-area-inset-left, 0px)); }
+  .nav.open { display: flex; }
+  .nav a { padding: 0.9em 0.2em; font-size: 1.05rem; border-bottom: 1px solid var(--line); min-height: 48px; }
+  .nav a[aria-current="page"] { box-shadow: none; color: var(--link); }
+  .nav a:hover { border-radius: 0; }
+  .theme { margin: 0.9rem 0 0; width: auto; height: auto; min-height: 48px; border-radius: 999px; padding: 0 1.2em; }
+  .theme:hover { border-radius: 999px; }
+  .theme .tt { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+}
+
+/* home hero */
+.hero { position: relative; overflow: clip; border-bottom: 1px solid var(--line); }
+.hero .wrap { position: relative; z-index: 1; padding-block: clamp(2.5rem, 6vw, 5rem); display: grid; gap: 1.4rem; }
+.hero h1 { font-size: clamp(3rem, 9vw, 7.4rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; max-width: 9ch; }
+.hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.6rem; margin-top: 0.6rem; }
+.chi-big {
+  position: absolute; z-index: 0; right: clamp(-220px, -9vw, -30px); top: 50%; translate: 0 -50%;
+  height: clamp(480px, 70vw, 900px); aspect-ratio: 276 / 310;
+  overflow: hidden; background: linear-gradient(160deg, var(--cam) 0%, #9fc0ac 60%, #8fb8a6 100%);
+  -webkit-mask: var(--chi) center / contain no-repeat; mask: var(--chi) center / contain no-repeat;
+}
+/* fluid fill: two oversized blob layers drift and turn at different speeds under the logomark mask (transform only, so it stays smooth) */
+.chi-big::before, .chi-big::after { content: ""; position: absolute; inset: -45%; pointer-events: none; will-change: transform; }
+.chi-big::before { background: radial-gradient(circle at 28% 26%, #eef8f1 0 18%, transparent 50%), radial-gradient(circle at 74% 64%, #e6c56e 0 22%, transparent 52%); animation: drift-a 15s ease-in-out infinite alternate; }
+.chi-big::after { background: radial-gradient(circle at 66% 22%, #4f9087 0 10%, transparent 38%), radial-gradient(circle at 22% 78%, #5F9C94 0 12%, transparent 40%); animation: drift-b 21s ease-in-out infinite alternate; }
+@keyframes drift-a { from { transform: translate(-16%, -12%) rotate(-20deg) scale(0.95); } to { transform: translate(16%, 12%) rotate(70deg) scale(1.2); } }
+@keyframes drift-b { from { transform: translate(14%, 15%) rotate(10deg) scale(1.15); } to { transform: translate(-16%, -14%) rotate(-75deg) scale(0.95); } }
+@media (max-width: 760px) { .chi-big { height: 420px; right: -150px; top: 30%; opacity: 0.28; } .hero h1 { max-width: 8ch; } .hero .lede { max-width: 22ch; } }
+@media (prefers-reduced-motion: reduce) { .chi-big, .chi-big::before, .chi-big::after { animation: none; } * { transition: none !important; } }
+
+/* bands */
+.band { padding-block: clamp(2.25rem, 5vw, 4.25rem); }
+.band.tint { background: var(--paper-2); }
+.band.night { background: var(--night); color: var(--night-ink); }
+.band.night .small-cap, .band.night .muted { color: var(--night-mute); }
+h2.big { font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.04em; }
+.band-head { display: grid; gap: 0.9rem; margin-bottom: clamp(1.4rem, 3vw, 2.2rem); }
+
+/* four words */
+.four { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.four li { display: grid; gap: 0.6rem; align-content: start; padding-top: 1rem; border-top: 6px solid var(--c); }
+.four b { font-family: var(--head); font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.four span { color: var(--mute); }
+@media (max-width: 760px) { .four { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 1rem; } }
+
+/* programme tiles */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: end; }
+.tile { display: grid; align-content: space-between; gap: 2rem; padding: clamp(1.2rem, 2.4vw, 1.8rem); border-radius: 22px; text-decoration: none; background: var(--bg); color: var(--fg); transition: transform .2s ease; }
+.tile:hover { transform: translateY(-5px); }
+.tile:nth-child(1) { min-height: 240px; }
+.tile:nth-child(2) { min-height: 310px; }
+.tile:nth-child(3) { min-height: 380px; }
+.tile h3 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); font-weight: 800; letter-spacing: -0.045em; }
+.tile .meta { font-family: var(--head); font-size: 0.82rem; font-weight: 600; line-height: 1.5; }
+.tile .yr { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.t-blue { --bg: var(--blue); --fg: var(--on-blue); }
+.t-amber { --bg: var(--amber); --fg: var(--on-warm); }
+.t-pink { --bg: var(--pink); --fg: var(--on-warm); }
+.t-green { --bg: var(--green); --fg: var(--on-warm); }
+@media (max-width: 800px) { .tiles { grid-template-columns: minmax(0, 1fr); } .tile:nth-child(n) { min-height: 0; } }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.facts div { border-top: 2px solid var(--ink); padding-top: 0.9rem; display: grid; gap: 0.2rem; }
+.facts b { font-family: var(--head); font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.facts span { color: var(--mute); }
+@media (max-width: 640px) { .facts { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; } }
+
+/* cebc band */
+.cols { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+@media (max-width: 860px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.addr { display: grid; gap: 1rem; }
+.addr div { border-top: 1px solid var(--night-line); padding-top: 0.9rem; display: grid; gap: 0.2rem; }
+.addr b { font-family: var(--head); font-weight: 700; }
+.addr address { font-style: normal; color: var(--night-mute); }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 700px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+.big-link { display: grid; gap: 1.6rem; align-content: space-between; min-height: 260px; padding: clamp(1.2rem, 2.4vw, 1.8rem); border-radius: 22px; text-decoration: none; background: var(--bg); color: var(--fg); transition: transform .2s ease; }
+.big-link:hover { transform: translateY(-5px); }
+.big-link p { max-width: 34ch; margin-top: 0.7rem; font-weight: 500; font-size: 1.1rem; line-height: 1.45; }
+.big-link .arr { font-family: var(--head); font-weight: 800; font-size: 1.8rem; line-height: 1; margin-left: auto; }
+.big-link .row { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 0.8rem; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 900px) { .trio { grid-template-columns: minmax(0, 1fr); } .big-link { min-height: 0; } }
+.faces { display: flex; }
+.faces img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 3px solid var(--bg); margin-left: -14px; background: var(--fg); }
+.faces img:first-child { margin-left: 0; }
+
+/* news */
+.news { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1rem; }
+.news-feature { grid-row: span 2; display: grid; align-content: space-between; gap: 2.4rem; min-height: 300px; padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: 22px; background: var(--cam); color: var(--on-warm); text-decoration: none; transition: transform .2s ease; }
+.news-feature:hover, .news-item:hover { transform: translateY(-4px); }
+.news-feature h3 { font-size: clamp(2.2rem, 4.8vw, 4rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1; max-width: 12ch; }
+.news-feature p { margin-top: 0.9rem; font-weight: 500; font-size: 1.1rem; max-width: 30ch; }
+.news-feature .row { display: flex; align-items: flex-end; gap: 1rem; }
+.news-feature .arr { font-family: var(--head); font-weight: 800; font-size: 1.8rem; line-height: 1; margin-left: auto; }
+.tag { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.news-item { display: flex; flex-direction: column; gap: 1rem; padding: 1.15rem 1.3rem; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: transform .2s ease; }
+.news-item .tag { color: var(--mute); }
+.news-item .nbody { display: grid; gap: 0.45rem; align-content: start; }
+.news-item .thumb { margin-top: auto; }
+.news-feature.has-img { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); grid-template-rows: auto 1fr auto; grid-template-areas: "tag img" "txt img" "row img"; column-gap: clamp(1rem, 3vw, 2rem); row-gap: 1.6rem; }
+.news-feature.has-img .tag { grid-area: tag; }
+.news-feature.has-img .nf-txt { grid-area: txt; align-self: end; }
+.news-feature.has-img .row { grid-area: row; }
+.news-feature.has-img .thumb { grid-area: img; width: 100%; height: 100%; min-height: 220px; aspect-ratio: auto; border-radius: 16px; }
+.news-feature.has-img h3 { font-size: clamp(1.9rem, 3.6vw, 3.1rem); max-width: none; }
+@media (max-width: 700px) { .news-feature.has-img { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "tag" "txt" "row" "img"; } .news-feature.has-img .thumb { height: auto; min-height: 0; aspect-ratio: 16 / 9; } }
+.news-item h3 { font-size: 1.25rem; letter-spacing: -0.03em; line-height: 1.2; }
+a.news-item[target="_blank"]::after, a.news-feature[target="_blank"]::after { content: none; }
+a.news-feature[target="_blank"] .arr::after { --m: var(--i-up); }
+.ev-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.ev-grid.n1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ev-card { position: relative; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1.4rem; align-items: start; padding: 1.4rem; border-radius: 22px; background: var(--card); border: 3px dashed var(--c); color: inherit; text-decoration: none; transition: transform .2s ease; }
+.ev-card { border-color: color-mix(in srgb, var(--c) 62%, var(--ink)); }
+:root[data-theme="dark"] .ev-card { border-color: var(--c); }
+.ev-card:hover { transform: translateY(-4px); }
+.ev-card.noimg { grid-template-columns: minmax(0, 1fr); }
+.ev-card .ev-img { width: 100%; aspect-ratio: 1;  object-fit: cover; border-radius: 14px; display: block; }
+.ev-card .ev-txt { display: flex; flex-direction: column; gap: 0.6rem; align-self: stretch; min-width: 0; }
+.ev-card .when { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.ev-card .where { color: var(--ink); margin-top: -0.35rem; }
+.ev-card h3 { font-size: 1.45rem; letter-spacing: -0.03em; line-height: 1.15; }
+.ev-card p { margin: 0; color: var(--mute); line-height: 1.45; }
+.ev-card .go { margin-top: auto; padding-top: 0.6rem; align-self: flex-end; font-family: var(--head); font-weight: 800; font-size: 1.5rem; line-height: 1; }
+.ev-card .go .arr::after { --m: var(--i-up); }
+a.ev-card[target="_blank"]::after { content: none; }
+a.ev-card:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+@media (max-width: 860px) { .ev-grid, .ev-grid.n1 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .ev-card { grid-template-columns: minmax(0, 1fr); } }
+.news.n1 { grid-template-columns: minmax(0, 1fr); }
+.news.n2 .news-item { grid-row: span 2; }
+@media (max-width: 860px) { .news { grid-template-columns: minmax(0, 1fr); } .news-feature { grid-row: auto; min-height: 280px; } }
+
+/* flagship card */
+.flag { position: relative; overflow: clip; display: grid; gap: 1.3rem; justify-items: start; padding: clamp(1.6rem, 4.5vw, 3.8rem); border-radius: 28px; background: var(--night); color: var(--night-ink); }
+.flag::after { content: ""; position: absolute; z-index: 0; right: -3%; top: 50%; translate: 0 -50%; height: 135%; aspect-ratio: 276 / 310; background: color-mix(in srgb, var(--night-ink) 13%, transparent); -webkit-mask: var(--chi) center / contain no-repeat; mask: var(--chi) center / contain no-repeat; pointer-events: none; }
+.flag > * { position: relative; z-index: 1; }
+.flag .small-cap { color: var(--night-mute); }
+.flag h2 { font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; max-width: 11ch; }
+.flag .lede { max-width: 34ch; }
+.steps { list-style: none; margin: 0.4rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.steps li { display: grid; padding: 0.7rem 1.1rem; border-radius: 16px; background: var(--bg); color: var(--fg); line-height: 1.15; }
+.steps b { font-family: var(--head); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.03em; }
+.steps span { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.flag .when { font-family: var(--head); font-weight: 700; font-size: 0.95rem; }
+.flag > .flag-vid { position: absolute; z-index: 0; right: 0; top: 0; bottom: 0; width: 50%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s ease; pointer-events: none; }
+.flag > .flag-vid.on { opacity: 1; }
+.flag.vid::before { content: ""; position: absolute; z-index: 1; right: 0; top: 0; bottom: 0; width: 54%; pointer-events: none; background: linear-gradient(90deg, var(--night) 0%, color-mix(in srgb, var(--night) 72%, transparent) 40%, color-mix(in srgb, var(--night) 56%, transparent) 100%); }
+.flag.vid::after { display: none; }
+@media (max-width: 760px) { .flag::after, .flag > .flag-vid, .flag.vid::before { display: none; } }
+
+/* inner page heads */
+.page-head { position: relative; overflow: clip; background: var(--bg); color: var(--fg); }
+.page-head::after { content: ""; position: absolute; z-index: 0; right: -9%; top: 50%; translate: 0 -50%; height: 135%; aspect-ratio: 276 / 310; background: color-mix(in srgb, var(--fg) 24%, transparent); -webkit-mask: var(--chi) center / contain no-repeat; mask: var(--chi) center / contain no-repeat; pointer-events: none; }
+.page-head .wrap { position: relative; z-index: 1; padding-block: clamp(2.6rem, 7vw, 5.5rem); display: grid; gap: 1.1rem; }
+.page-head h1 { font-size: clamp(2.8rem, 8vw, 6.4rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.95; max-width: 11ch; }
+.page-head p { font-size: clamp(1.1rem, 1.8vw, 1.3rem); max-width: 40ch; line-height: 1.4; }
+.page-head.long h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); max-width: 14ch; }
+.page-head .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.4rem; }
+.page-head .btn { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+@media (max-width: 700px) { .page-head::after { display: none; } }
+.page-head.night-head { --bg: var(--night); --fg: var(--night-ink); }
+
+/* programme stages */
+.stages { display: grid; gap: 1rem; }
+.stage { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(1rem, 4vw, 3rem); padding: clamp(1.2rem, 3vw, 2rem); border-radius: 22px; background: var(--card); border: 1px solid var(--line); }
+.stage .badge { display: inline-block; font-family: var(--head); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.045em; padding: 0.1em 0.5em 0.15em; border-radius: 14px; background: var(--bg); color: var(--fg); }
+.stage .sub { margin-top: 0.8rem; color: var(--mute); font-weight: 500; }
+@media (max-width: 760px) { .stage { grid-template-columns: minmax(0, 1fr); } }
+details.unit { border-top: 1px solid var(--line); }
+details.unit:first-child { border-top: 0; }
+details.unit summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 4.6rem minmax(0, 1fr) auto; gap: 0.8rem; align-items: baseline; padding: 0.95rem 0; min-height: 48px; }
+details.unit summary::-webkit-details-marker { display: none; }
+details.unit summary .n { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+details.unit summary .t { font-family: var(--head); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.015em; }
+details.unit summary::after { content: "+" / ""; font-family: var(--head); font-size: 1.5rem; line-height: 1; transition: transform .2s ease; }
+details.unit[open] summary::after { transform: rotate(45deg); }
+details.unit .body { padding: 0 0 1.2rem 5.4rem; display: grid; gap: 0.5rem; }
+details.unit .body .k { font-family: var(--head); font-weight: 700; font-size: 0.78rem; }
+@media (max-width: 520px) { details.unit summary { grid-template-columns: minmax(0, 1fr) auto; } details.unit summary .n { grid-column: 1 / -1; } details.unit .body { padding-left: 0; } }
+.kv { margin: 0; display: grid; border-top: 2px solid var(--ink); }
+.kv > div { display: grid; grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr); gap: 1.2rem; padding: 0.95rem 0; border-bottom: 1px solid var(--line); }
+.kv dt { font-family: var(--head); font-weight: 700; font-size: 0.9rem; }
+.kv dd { margin: 0; }
+@media (max-width: 520px) { .kv > div { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; } }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 600px; }
+th, td { text-align: left; padding: 0.95rem 1.1rem; border-bottom: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
+th { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--paper-2); }
+tbody th { font-size: 1rem; text-transform: none; letter-spacing: -0.01em; background: transparent; }
+tr:last-child > * { border-bottom: 0; }
+.callout { display: grid; gap: 1.2rem; padding: clamp(1.4rem, 3.4vw, 2.6rem); border-radius: 22px; background: var(--amber); color: var(--on-warm); }
+.callout h2 { font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.04em; max-width: 16ch; }
+.callout ul { margin: 0; padding-left: 1.2rem; max-width: 46ch; display: grid; gap: 0.3rem; font-weight: 500; }
+.callout .btn { background: var(--on-warm); color: #fff; border-color: var(--on-warm); }
+.callout .btn.ghost { background: transparent; color: var(--on-warm); }
+.callout .btn.ghost:hover { background: var(--on-warm); color: #fff; }
+.callout :focus-visible { outline-color: #0e1f19; }
+.row-links { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+/* lists */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+.chip { font-family: var(--head); font-size: 0.82rem; font-weight: 700; min-height: 44px; padding: 0.5em 1.2em; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.chip:hover { background: var(--paper-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.note { font-size: 0.95rem; color: var(--mute); border-left: 4px solid var(--amber); padding: 0.3rem 0 0.3rem 1rem; max-width: 62ch; }
+.list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.list > li { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 0.4rem 1.5rem; align-items: baseline; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.list h3 { font-size: 1.35rem; letter-spacing: -0.03em; }
+.list .area { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.list .area i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); flex: none; }
+.list .lead { color: var(--mute); }
+.list .gl { display: block; margin-top: 0.5rem; color: var(--ink); font-weight: 600; }
+.list .gl-p { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.4rem; }
+.list .gl-p .ph { width: 36px; flex: none; border-radius: 50%; font-size: 0.8rem; }
+.list .gl b { display: block; font-family: var(--head); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); margin-bottom: 0.1rem; }
+@media (max-width: 760px) { .list > li { grid-template-columns: minmax(0, 1fr); } }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 980px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .grid3 { grid-template-columns: minmax(0, 1fr); } }
+.person { display: flex; flex-direction: column; gap: 0.85rem; padding: 1.4rem; border-radius: 22px; background: var(--card); border: 1px solid var(--line); }
+.who { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 1.1rem; align-items: center; }
+.ph { position: relative; aspect-ratio: 1; border-radius: 20px; overflow: hidden; background: var(--bg); color: var(--fg); display: grid; place-items: center; font-family: var(--head); font-weight: 800; font-size: 1.8rem; letter-spacing: -0.03em; }
+.ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.person h3 { font-size: 1.3rem; letter-spacing: -0.03em; line-height: 1.15; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-wrap: balance; }
+.person .role { font-family: var(--head); font-size: 0.84rem; font-weight: 700; color: var(--link); line-height: 1.35; }
+@media (min-width: 621px) { .person .role { min-height: 2.7em; } }
+.person .titles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; color: var(--mute); font-size: 0.98rem; line-height: 1.4; }
+a.tag-pill { text-decoration: none; }
+a.tag-pill:hover { background: var(--ink); color: var(--paper); }
+.person .foot-row { margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--line); display: grid; gap: 0.7rem; }
+.person .foot-row:empty { display: none; }
+.person .tags { margin: 0; flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+.person .tags li { max-width: 100%; display: flex; }
+.person .tag-pill { max-width: 100%; white-space: nowrap; }
+.person .tag-pill .t { overflow: hidden; text-overflow: ellipsis; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+@media (max-width: 860px) { .three { grid-template-columns: minmax(0, 1fr); } }
+.three > div { border-top: 6px solid var(--c); padding-top: 1rem; display: grid; gap: 0.6rem; align-content: start; }
+.three h3 { font-size: 1.6rem; letter-spacing: -0.04em; }
+.three ul { margin: 0; padding-left: 1.1rem; color: var(--mute); }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
+.ticks li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 0.9rem; align-items: baseline; }
+.ticks li::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--chi-grad); transform: translateY(2px); }
+.copyrow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+.copyrow code { font-family: var(--head); font-weight: 600; font-size: 0.98rem; overflow-wrap: anywhere; user-select: all; }
+.copy { font-family: var(--head); font-size: 0.78rem; font-weight: 700; min-height: 36px; padding: 0.4em 1em; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.copy:hover { background: var(--paper-2); }
+.more { font-family: var(--head); font-size: 0.88rem; font-weight: 700; min-height: 44px; padding: 0.5em 1.4em; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.more:hover { background: var(--paper-2); }
+
+/* filters, news pages, articles */
+.filters { border: 1px solid var(--line); border-radius: 22px; background: var(--card); padding: 0.2rem 1.3rem; margin-bottom: 1.2rem; }
+.filterrow { display: grid; grid-template-columns: 13.5rem minmax(0, 1fr); gap: 0.4rem 1rem; align-items: start; padding: 0.85rem 0; }
+.filterrow + .filterrow { border-top: 1px solid var(--line); }
+.filterrow .lab { font-family: var(--head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); padding-top: 0.6rem; }
+.chips-in { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.filters .chip { min-height: 36px; padding: 0.3em 1em; font-size: 0.8rem; border-width: 1.5px; }
+@media (max-width: 700px) { .filterrow { grid-template-columns: minmax(0, 1fr); } .filterrow .lab { padding-top: 0; } }
+.status { color: var(--mute); font-size: 0.92rem; margin-bottom: 1.2rem; min-height: 1.4em; }
+.tags { list-style: none; margin: 0.55rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.tag-pill { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--head); font-size: 0.74rem; font-weight: 700; line-height: 1.2; padding: 0.3em 0.75em 0.3em 0.6em; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
+.tag-pill i { width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c, var(--ink)); flex: none; }
+.tag-pill.sig { border-style: dashed; background: var(--paper-2); }
+.tag-pill.sig i { border-radius: 2px; rotate: 45deg; }
+.sig-card { display: grid; gap: 0.7rem; align-content: start; padding: 1.4rem; border-radius: 22px; background: var(--card); border: 1px solid var(--line); border-top: 6px dashed var(--c); }
+.sig-card h3 { font-size: 1.3rem; letter-spacing: -0.03em; line-height: 1.15; }
+.sig-card { position: relative; }
+.sig-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 22px; }
+.sig-card:focus-within { outline: 3px solid var(--link); outline-offset: 3px; }
+.sig-card h3 a:focus-visible { outline: none; }
+.sig-card h3 a { text-decoration: none; }
+.past-list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.past-list li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) 6.5rem; gap: 0.2rem 2rem; align-items: baseline; padding: 0.85rem 0; border-top: 1px solid var(--line); }
+.past-list a { font-family: var(--head); font-weight: 700; font-size: 1.02rem; color: var(--ink); text-underline-offset: 4px; justify-self: start; }
+.past-list a:hover { color: var(--link); }
+.past-list li p { grid-column: 2; grid-row: 1; margin: 0; color: var(--mute); font-size: 0.92rem; line-height: 1.45; }
+.past-list span { grid-column: 3; grid-row: 1; text-align: right; color: var(--mute); font-size: 0.88rem; white-space: nowrap; }
+@media (max-width: 700px) { .past-list li { grid-template-columns: minmax(0, 1fr) auto; } .past-list li p { grid-column: 1 / -1; grid-row: 2; } .past-list span { grid-column: 2; } }
+.sig-wrap .lede { max-width: 56ch; margin: 0; }
+.sig-wrap .tag::before { content: ""; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 2px; background: var(--pink); rotate: 45deg; margin-right: 0.7em; }
+.sig-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2.4rem; margin: 0.4rem 0 0; }
+.sig-meta div { display: grid; gap: 0.1rem; }
+.sig-meta dt { font-family: var(--head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.sig-meta dd { margin: 0; }
+.sig-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 340px); gap: 2.5rem; width: 100%; align-items: start; margin-top: 0.8rem; }
+.sig-cols .article { margin-top: 0; }
+.sig-cols .article img { width: auto; max-height: 32rem; }
+@media (max-width: 860px) { .sig-cols { grid-template-columns: minmax(0, 1fr); } }
+.sig-team { padding: 1.4rem; border-radius: 22px; background: var(--card); border: 1px solid var(--line); }
+.sig-team .sub-h { margin: 0 0 1rem; }
+.sig-team ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.member { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0.85rem; align-items: center; text-decoration: none; color: inherit; }
+.member .ph { border-radius: 14px; font-size: 1.05rem; }
+.member b { display: block; font-family: var(--head); font-size: 1rem; line-height: 1.2; letter-spacing: -0.02em; }
+.member small { display: block; color: var(--mute); font-size: 0.86rem; line-height: 1.35; margin-top: 0.15rem; }
+a.member:hover b { text-decoration: underline; text-underline-offset: 3px; }
+a.member[target="_blank"]::after { content: none; }
+.sig-card h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sig-card .kind { font-family: var(--head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.sig-card p { margin: 0; color: var(--mute); line-height: 1.45; }
+.sig-card .proj { font-size: 0.92rem; }
+.sig-card .proj b { font-family: var(--head); color: var(--ink); }
+.sig-card .row { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.3rem; font-size: 0.9rem; color: var(--mute); }
+.news-item .sum { color: var(--mute); font-size: 0.98rem; line-height: 1.45; }
+.thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; background: var(--paper-2); }
+.sub-h { font-size: 0.8rem; font-family: var(--head); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); margin: 2.2rem 0 1rem; }
+.aims { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.aims li { display: grid; gap: 0.5rem; align-content: start; padding: 1.3rem 1.4rem 1.5rem; border-radius: 20px; background: var(--card); border: 1px solid var(--line); border-top: 6px solid var(--c); }
+.aims b { font-family: var(--head); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; }
+.aims span { color: var(--mute); line-height: 1.5; }
+@media (max-width: 980px) { .aims { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .aims { grid-template-columns: minmax(0, 1fr); } }
+.quotes { columns: 3 17rem; column-gap: 1rem; }
+.quote { break-inside: avoid; margin: 0 0 1rem; padding: 1.4rem 1.5rem 1.5rem; border-radius: 22px; background: var(--card); border: 1px solid var(--line); border-top: 6px solid var(--c); }
+.quote blockquote { margin: 0 0 1.1rem; line-height: 1.55; }
+.quote blockquote p { margin: 0; }
+.quote blockquote::before { content: "\201C" / ""; display: block; font-family: var(--head); font-weight: 800; font-size: 3rem; line-height: 0.6; height: 1.4rem; color: var(--c); }
+.quote figcaption b { display: block; font-family: var(--head); font-weight: 700; }
+.quote figcaption span { color: var(--mute); font-size: 0.92rem; line-height: 1.4; display: block; }
+.article-wrap { padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 7vw, 6rem); display: grid; gap: 1.1rem; justify-items: start; }
+.article-wrap h1 { font-size: clamp(2.2rem, 5.5vw, 4.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1; max-width: 18ch; }
+.article-wrap .tag { color: var(--mute); }
+.back::before { --m: var(--i-left); width: 0.9em; height: 0.9em; margin-right: 0.5em; vertical-align: -0.1em; }
+.article { max-width: 66ch; width: 100%; display: grid; gap: 1.1rem; font-size: 1.1rem; line-height: 1.65; margin-top: 0.6rem; }
+.article h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.035em; margin-top: 1rem; }
+.article h3 { font-size: 1.3rem; letter-spacing: -0.03em; margin-top: 0.6rem; }
+.article h4, .article h5, .article h6 { font-size: 1.05rem; }
+.article ul, .article ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.4rem; }
+.article a { color: var(--link); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.article img { max-width: 100%; height: auto; border-radius: 14px; }
+.article blockquote { margin: 0; padding-left: 1.2rem; border-left: 6px solid var(--pink); font-size: 1.25rem; line-height: 1.45; }
+.article hr { border: 0; border-top: 1px solid var(--line); width: 100%; }
+.article table { display: block; overflow-x: auto; min-width: 0; }
+.article code { font-size: 0.95em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 6px; }
+
+/* footer */
+.foot { background: var(--night); color: var(--night-ink); padding-block: clamp(2.5rem, 5vw, 4rem) 2rem; }
+.foot .top { display: grid; grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 0.6fr)) minmax(0, 1fr); gap: 2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--night-line); }
+.foot h2 { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--night-mute); font-weight: 700; margin-bottom: 0.7rem; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+.foot li a { display: inline-block; padding-block: 0.25rem; }
+.foot a { text-decoration: none; }
+.foot a:hover { text-decoration: underline; text-decoration-color: var(--pink); text-underline-offset: 4px; }
+.foot .small { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 2rem; padding-top: 1.4rem; font-size: 0.85rem; color: var(--night-mute); }
+.foot .small div { display: flex; flex-wrap: wrap; gap: 0.2rem 1.4rem; }
+.foot .small a { padding-block: 0.25rem; }
+.foot .uni { display: inline-block; margin-top: 1.8rem; padding-block: 0.3rem; }
+.foot a.uni::after { content: none; }
+.foot .uni img { display: block; height: 46px; width: auto; max-width: 100%; }
+.foot address { font-style: normal; color: var(--night-mute); max-width: 30ch; }
+.foot address { margin-top: 0; margin-bottom: 0.9rem; }
+.foot .tlink { display: block; width: fit-content; margin-top: 0.5rem; }
+.foot .social { display: flex; gap: 0.6rem; margin-top: 1.4rem; }
+.foot .social a { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--night-line); border-radius: 50%; color: var(--night-ink); transition: background .15s, color .15s, border-color .15s; }
+.foot .social a:hover { background: var(--night-ink); color: var(--night); border-color: var(--night-ink); text-decoration: none; }
+.foot .social a::after { content: none; }
+.w3w { display: inline-flex; align-items: center; gap: 0.5rem; padding-block: 0.25rem; font-family: var(--head); font-weight: 700; font-size: 0.95rem; color: inherit; text-decoration: none; }
+.w3w-mark { display: inline-grid; place-items: center; min-width: 1.7rem; height: 1.7rem; padding-inline: 0.25rem; border-radius: 4px; background: #e11f26; color: #fff; font-size: 0.8rem; letter-spacing: -0.04em; }
+.w3w:hover .w3w-words { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: currentColor; }
+.w3w::after { content: none !important; }
+@media (max-width: 1000px) { .foot .top { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot .top > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .foot .top { grid-template-columns: minmax(0, 1fr); } }
+</style>
+
+<div id="app" lang="en-GB">
+<a class="skip" href="#content">Skip to main content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Cambridge Centre for Healthcare Innovation, home">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="lockup"><i>Cambridge Centre for</i><b>Healthcare Innovation</b></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#research" data-route="research">Research</a>
+      <a href="#education" data-route="education">MSt</a>
+      <a href="#people" data-route="people">People</a>
+      <a href="#news" data-route="news">News</a>
+      <a href="#contact" data-route="contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span class="tt">Dark mode</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="content" tabindex="-1">
+<!-- HOME -->
+<section id="p-home" data-page="home" data-title="Home">
+  <div class="hero">
+    <div class="chi-big" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Engineering better care</h1>
+      <p class="lede">People from engineering, medicine, public health and many other fields, working together to improve health and care.</p>
+      <div class="actions">
+        <a class="btn" href="#research"><span class="arr">Our research</span></a>
+        <a class="btn ghost" href="#education"><span class="arr">The MSt</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="flag night">
+        <video class="flag-vid" id="flag-vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-mp4="img/hero.mp4" data-webm="img/hero.webm"></video>
+        <span class="small-cap">Our flagship programme</span>
+        <h2>MSt in Healthcare Innovation</h2>
+        <p class="lede">A three-year, part-time Master of Studies for future leaders in medicine, engineering and related fields.</p>
+        <ul class="steps" aria-label="The three years">
+          <li style="--bg:var(--blue);--fg:var(--on-blue)"><b>PgCert</b><span>Year 1</span></li>
+          <li style="--bg:var(--amber);--fg:var(--on-warm)"><b>PgDip</b><span>Year 2</span></li>
+          <li style="--bg:var(--pink);--fg:var(--on-warm)"><b>MSt</b><span>Year 3</span></li>
+        </ul>
+        <div class="row-links">
+          <a class="btn" href="#education"><span class="arr">Explore the MSt</span></a>
+          <a class="btn ghost" href="#apply">How to apply</a>
+        </div>
+        <p class="when">Applications open late October 2026.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" id="events" hidden>
+    <div class="wrap">
+      <h2 class="big" style="margin-bottom:1.6rem">Events</h2>
+      <div class="news" id="home-events"></div>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.4rem 1.5rem;margin-bottom:1.6rem">
+        <h2 class="big">News</h2>
+        <a class="tlink" href="#news">All news</a>
+      </div>
+      <div class="news" id="home-news"></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2 class="sr">What we do</h2>
+      <div class="pair">
+        <a class="big-link t-blue" href="#research"><div><h3>Research</h3><p>Groups across the Engineering Design Centre.</p></div><span class="row"><span class="arr" aria-hidden="true"></span></span></a>
+        <a class="big-link t-green" href="#people"><div><h3>People</h3><p>Who is involved in the Centre.</p></div><span class="row"><span class="faces" id="home-faces" aria-hidden="true"></span><span class="arr" aria-hidden="true"></span></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">Our core tenets</h2><p class="lede">What we teach in healthcare systems, and what sits behind everything the Centre does.</p></div>
+      <ul class="four" id="four"></ul>
+      <div class="row-links" style="margin-top:2rem"><a class="btn" href="https://raeng.org.uk/policy-and-resources/engineering-policy/health/engineering-better-care/" target="_blank" rel="noopener"><span class="arr">Read the Engineering Better Care report</span><span class="sr"> (opens in a new tab)</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="p-education" data-page="education" data-title="MSt in Healthcare Innovation" hidden>
+  <div class="page-head long" style="--bg:var(--blue);--fg:var(--on-blue)"><div class="wrap">
+    <h1>MSt in Healthcare Innovation</h1>
+    <p>Our flagship programme. Three years, part-time, in three stages: PgCert, PgDip and MSt. Open to people from any technical or healthcare-related background.</p>
+    <div class="actions"><a class="btn" href="#apply"><span class="arr">Apply</span></a></div>
+  </div></div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="cols" style="align-items:start">
+        <div style="display:grid;gap:1.1rem">
+          <h2 class="big">Learn to innovate across engineering, design and healthcare</h2>
+          <p class="lede">You study how healthcare systems work and the technologies used in them, then apply both to a research project of your own. Residential weeks in Cambridge, online sessions and self-directed study fit around a full-time job.</p>
+        </div>
+        <dl class="kv">
+          <div><dt>Length</dt><dd>Three years part-time, one stage a year. Breaks are allowed, up to eight years in all.</dd></div>
+          <div><dt>Awards</dt><dd>PgCert, PgDip, MSt. You leave with the highest you complete.</dd></div>
+          <div><dt>Your time</dt><dd>About one day a week.</dd></div>
+          <div><dt>Course Director</dt><dd>Professor James Ward</dd></div>
+        </dl>
+      </div>
+      <h3 class="sub-h">What you gain</h3>
+      <ul class="aims">
+        <li style="--c:var(--blue)"><b>Systems understanding</b><span>How local, national and global healthcare systems work, and where technology fits.</span></li>
+        <li style="--c:var(--amber)"><b>A shared language</b><span>The vocabulary and mindset to work between medicine, engineering and commercial settings.</span></li>
+        <li style="--c:var(--pink)"><b>Leadership skills</b><span>Systems leadership, and using technology to deliver value in healthcare, research and business.</span></li>
+        <li style="--c:var(--green)"><b>Industry context</b><span>Workshops, seminars and projects with industrial partners.</span></li>
+        <li style="--c:var(--blue)"><b>Sound practice</b><span>The practical and ethical questions behind improving care and developing biomedical technology.</span></li>
+        <li style="--c:var(--amber)"><b>A network</b><span>Classmates from health, engineering and industry who will lead in this field.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">Pathway</h2><p class="lede">Each stage stands on its own. You leave with the highest award you complete.</p></div>
+      <div class="stages" id="stages"></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">How it works</h2></div>
+      <dl class="kv">
+        <div><dt>Your time</dt><dd>About one day a week across the year, in peaks and troughs. It is built to fit around full-time work.</dd></div>
+        <div><dt>Residential weeks</dt><dd>Each PgCert and PgDip unit has a week in Cambridge. Attendance is required.</dd></div>
+        <div><dt>Between weeks</dt><dd>Supervisions, usually online, plus online lectures and resources.</dd></div>
+        <div><dt>How you are taught</dt><dd>Lectures, seminars, small-group teaching, guest speakers, workshops, practicals, case studies and team-building sessions.</dd></div>
+        <div><dt>Assessment</dt><dd>A written report for each unit. Units 1, 3, 4 and 6: one report of 3,000 to 4,000 words. Units 2 and 5: three short reports of four pages each.</dd></div>
+        <div><dt>Moving on</dt><dd>Pass the year to progress. The PgCert and PgDip each work as a stand-alone course.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">The MSt year</h2><p class="lede">A research project of your own, on a topic in scientific, medical, social or business innovation in healthcare.</p></div>
+      <dl class="kv">
+        <div><dt>Dissertation</dt><dd>10,000 to 12,000 words. It can use primary or secondary data, or be a systematic review, quantitative or qualitative.</dd></div>
+        <div><dt>Planning report</dt><dd>Up to 3,000 words. It sets your research in the context of future trends and shows how a systems approach shapes innovation.</dd></div>
+        <div><dt>Supervision</dt><dd>A project supervisor, monthly online meetings, and group seminars on research skills.</dd></div>
+        <div><dt>In Cambridge</dt><dd>Short visits to present your plan and, later, your findings. Other year groups are invited to the final presentations.</dd></div>
+        <div><dt>Assessment</dt><dd>The planning report and the dissertation, each with an oral presentation.</dd></div>
+        <div><dt>Joining</dt><dd>For current or deferred PgDip students who passed the PgCert year. You apply separately for the MSt and for a Cambridge College. The College fee is included in the course fee.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">Dates and fees</h2><p class="muted" style="color:var(--mute)">2026–27. Fees are per year.</p></div>
+      <div class="tablewrap" tabindex="0" role="region" aria-label="Dates and fees table, scrolls sideways on small screens"><table>
+        <caption class="sr">Residential weeks and fees for 2026 to 27</caption>
+        <thead><tr><th scope="col">Stage</th><th scope="col">In Cambridge</th><th scope="col">Home</th><th scope="col">Overseas</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">PgCert</th><td>28 Sep to 2 Oct 2026<br>11 to 15 Jan 2027<br>19 to 23 Apr 2027</td><td>£6,325</td><td>£11,605</td></tr>
+          <tr><th scope="row">PgDip</th><td>28 Sep to 2 Oct 2026<br>11 to 15 Jan 2027<br>19 to 23 Apr 2027</td><td>£6,325</td><td>£11,605</td></tr>
+          <tr><th scope="row">MSt</th><td>Two 2-day visits<br>Sep 2026 to Aug 2027</td><td>£6,325</td><td>£11,605</td></tr>
+        </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">Entry requirements</h2></div>
+      <dl class="kv">
+        <div><dt>Who it suits</dt><dd>New graduates and mid-career professionals from any technical or healthcare-related background.</dd></div>
+        <div><dt>Degree</dt><dd>First or upper second class honours, or equivalent. Usually life sciences, medical sciences, computing or engineering. Other backgrounds considered.</dd></div>
+        <div><dt>Language</dt><dd>Non-native speakers need an English language test. <a class="tlink" href="https://www.postgraduate.study.cam.ac.uk/international/competence-english" target="_blank" rel="noopener">Requirements</a></dd></div>
+        <div><dt>Visas</dt><dd>Overseas students attend on a Student Visitor visa. Student visa sponsorship is not available. <a class="tlink" href="https://www.internationalstudents.cam.ac.uk/immigration/short-period-study" target="_blank" rel="noopener">Guidance</a></dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="band" id="testimonials">
+    <div class="wrap">
+      <div class="band-head"><h2 class="big">In their words</h2><p class="lede">From our first cohort after their first week in Cambridge, and from people in industry.</p></div>
+      <h3 class="sub-h">Students</h3>
+      <div class="quotes" id="quotes-student"></div>
+      <h3 class="sub-h">Industry</h3>
+      <div class="quotes" id="quotes-industry"></div>
+    </div>
+  </div>
+
+  <div class="band tint" id="applying">
+    <div class="wrap">
+      <div class="callout">
+        <h2>Applications open late October 2026.</h2>
+        <ul>
+          <li>New students apply for the PgCert.</li>
+          <li>MSt places are for PgDip students who passed the PgCert.</li>
+          <li>The MSt application fee is £85, refunded when you start.</li>
+        </ul>
+        <div class="row-links">
+          <a class="btn" href="https://healthcare.eng.cam.ac.uk/application-details" target="_blank" rel="noopener"><span class="arr">How to apply</span></a>
+          <a class="btn ghost" href="https://healthcare.eng.cam.ac.uk/fees-funding-and-support" target="_blank" rel="noopener">Fees and funding</a>
+          <a class="btn ghost" href="https://healthcare.eng.cam.ac.uk/frequently-asked-questions" target="_blank" rel="noopener">FAQs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOMEDICAL CAMPUS SITE -->
+<section id="p-cebc" data-page="cebc" data-title="Biomedical Campus site" hidden>
+  <div class="page-head night-head long"><div class="wrap">
+    <h1>Biomedical Campus site</h1>
+    <p>Additional premises for the Centre on the Cambridge Biomedical Campus, used occasionally.</p>
+  </div></div>
+
+  <div class="band">
+    <div class="wrap cols" style="align-items:start">
+      <div style="display:grid;gap:1.1rem;justify-items:start">
+        <h2 class="big" style="font-size:clamp(1.8rem,4vw,2.8rem)">Centre for Engineering Better Care</h2>
+        <p class="lede">The CEBC is our space in the Clifford Allbutt Building. The Centre is based at the Engineering Design Centre.</p>
+        <a class="btn" href="https://cebc.eng.cam.ac.uk/" target="_blank" rel="noopener"><span class="arr">CEBC website</span></a>
+      </div>
+      <div class="addr" style="color:var(--ink)">
+        <div style="border-color:var(--line)"><span class="small-cap">Address</span><b>Clifford Allbutt Building</b><address style="color:var(--mute)">Hills Road<br>Cambridge CB2 0AH</address></div>
+        <p class="muted" style="color:var(--mute)">Manager: Professor James Ward</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="band tint">
+    <div class="wrap" style="display:grid;gap:0.4rem;justify-items:start">
+      <h2 style="font-size:1.4rem;margin-bottom:0.6rem">Related links</h2>
+      <a class="tlink" href="https://reports.raeng.org.uk/engineering-better-care/cover/" target="_blank" rel="noopener">Engineering Better Care report</a>
+      <a class="tlink" href="http://www.iitoolkit.com/" target="_blank" rel="noopener">Systems Approach toolkit</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="p-research" data-page="research" data-title="Research" hidden>
+  <div class="page-head" style="--bg:var(--green);--fg:var(--on-warm)"><div class="wrap">
+    <h1>Research</h1>
+    <p>Research groups and partners in the Centre.</p>
+  </div></div>
+  <div class="band">
+    <div class="wrap">
+      <h2 class="big" style="margin-bottom:1.4rem">Research groups</h2>
+      <ul class="list" id="groups"></ul>
+      <h2 class="big" style="margin:3.4rem 0 0.8rem">Special interest groups</h2>
+      <p class="lede" style="margin-bottom:1.4rem;max-width:52ch">Smaller collaborations across the Centre, formed around a topic or a project.</p>
+      <div class="grid3" id="sigs"></div>
+      <div id="sigs-past" hidden>
+        <h3 class="sub-h">Past special interest groups</h3>
+        <ul class="past-list" id="past-list"></ul>
+      </div>
+      <h2 class="big" style="margin:3.4rem 0 1.4rem">Partners</h2>
+      <ul class="list" id="partners"></ul>
+      <p class="note" style="margin-top:1.6rem">Groups are from the Engineering Design Centre. To be confirmed, with more to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section id="p-people" data-page="people" data-title="People" hidden>
+  <div class="page-head" style="--bg:var(--pink);--fg:var(--on-warm)"><div class="wrap">
+    <h1>People</h1>
+    <p>People involved in the Centre.</p>
+  </div></div>
+  <div class="band">
+    <div class="wrap">
+      <div class="filters" id="people-filters"></div>
+      <p class="status" id="people-status" role="status" aria-live="polite"></p>
+      <div class="grid3" id="people-grid"></div>
+      <p class="note" style="margin-top:1.6rem">Researchers and more people to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="p-news" data-page="news" data-title="News" hidden>
+  <div class="page-head" style="--bg:var(--amber);--fg:var(--on-warm)"><div class="wrap">
+    <h1>News</h1>
+    <p>News from the Centre and the MSt.</p>
+  </div></div>
+  <div class="band">
+    <div class="wrap">
+      <div class="filters" id="news-filters"></div>
+      <p class="status" id="news-status" role="status" aria-live="polite"></p>
+      <div class="grid3" id="news-grid"></div>
+      <p style="margin-top:1.4rem"><button class="more" type="button" id="news-more" hidden>Load older news</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS ARTICLE -->
+<section id="p-article" data-page="article" data-title="News" hidden>
+  <div class="wrap article-wrap">
+    <a class="tlink back" href="#news">All news</a>
+    <p class="tag" id="article-meta"></p>
+    <h1 id="article-title"></h1>
+    <div class="article" id="article-body"></div>
+  </div>
+</section>
+
+<!-- SPECIAL INTEREST GROUP -->
+<section id="p-sig" data-page="sig" data-title="Special interest group" hidden>
+  <div class="wrap article-wrap sig-wrap">
+    <a class="tlink back" href="#research">Research</a>
+    <p class="tag" id="sig-kind"></p>
+    <h1 id="sig-title"></h1>
+    <p class="lede" id="sig-sum"></p>
+    <dl class="sig-meta" id="sig-meta"></dl>
+    <div class="sig-cols">
+      <div class="article" id="sig-body"></div>
+      <aside class="sig-team" id="sig-team" aria-labelledby="sig-team-h" hidden>
+        <h2 class="sub-h" id="sig-team-h">Team</h2>
+        <ul id="sig-members"></ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="p-contact" data-page="contact" data-title="Contact" hidden>
+  <div class="page-head night-head"><div class="wrap">
+    <h1>Contact</h1>
+    <p>Applications, course content and visiting.</p>
+  </div></div>
+  <div class="band">
+    <div class="wrap cols" style="align-items:start">
+      <dl class="kv">
+        <div><dt>General enquiries</dt><dd><div class="copyrow"><code id="m1">HIP-admin@eng.cam.ac.uk</code><button class="copy" type="button" data-copy="m1" aria-label="Copy general enquiries email">Copy</button></div></dd></div>
+        <div><dt>Course content</dt><dd><div class="copyrow"><code id="m2">healthcare-course-director@eng.cam.ac.uk</code><button class="copy" type="button" data-copy="m2" aria-label="Copy course content email">Copy</button></div></dd></div>
+        <div><dt>Telephone</dt><dd><div class="copyrow"><code id="m3">+44 (0)1223 332600</code><button class="copy" type="button" data-copy="m3" aria-label="Copy telephone number">Copy</button></div></dd></div>
+      </dl>
+      <div style="display:grid;gap:1.4rem">
+        <div><h2 style="font-size:1.4rem;margin-bottom:0.5rem">CHI Cambridge</h2><address style="font-style:normal"><strong>Engineering Design Centre</strong><br>Department of Engineering<br>University of Cambridge<br>Trumpington Street<br>Cambridge CB2 1PZ</address><p style="margin-top:0.5rem;color:var(--mute)">Report to reception in the Baker Building.</p><p style="margin-top:0.7rem"><a class="w3w" href="https://what3words.com/agent.first.engage" target="_blank" rel="noopener" aria-label="what3words location: agent dot first dot engage"><span class="w3w-mark" aria-hidden="true">///</span><span class="w3w-words" data-w3w>agent.first.engage</span></a></p><a class="tlink" href="https://www.eng.cam.ac.uk/about-us/how-find-us" target="_blank" rel="noopener">How to find us</a></div>
+        <div><h2 style="font-size:1.4rem;margin-bottom:0.5rem">CHI South</h2><address style="font-style:normal"><strong>Centre for Engineering Better Care</strong><br>Clifford Allbutt Building<br>Cambridge Biomedical Campus<br>Hills Road<br>Cambridge CB2 0AH</address><p style="margin-top:0.7rem"><a class="tlink" href="#cebc">About this site</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#home"><span class="mark" aria-hidden="true"></span><span class="lockup"><i>Cambridge Centre for</i><b>Healthcare Innovation</b></span></a>
+        <a class="uni" href="https://www.cam.ac.uk/" target="_blank" rel="noopener"><img src="img/cambridge-logo-white.png" alt="University of Cambridge" width="560" height="117"></a>
+        <ul class="social" aria-label="Social media"><li><a id="f-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li><li><a id="f-x" href="https://x.com/CamHealthInnov" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></li></ul>
+      </div>
+      <nav aria-label="Footer"><h2>Explore</h2><ul>
+        <li><a href="#research">Research</a></li><li><a href="#education">MSt</a></li><li><a href="#people">People</a></li><li><a href="#news">News</a></li><li><a href="#apply">Apply</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+      <div><h2>MSt</h2><ul>
+        <li><a href="https://healthcare.eng.cam.ac.uk/fees-funding-and-support" target="_blank" rel="noopener">Fees and funding</a></li>
+        <li><a href="https://healthcare.eng.cam.ac.uk/frequently-asked-questions" target="_blank" rel="noopener">FAQs</a></li></ul></div>
+      <div><h2>Find us</h2>
+        <address>Engineering Design Centre<br>Department of Engineering<br>University of Cambridge<br>Trumpington Street<br>Cambridge CB2 1PZ</address>
+        <a class="w3w" href="https://what3words.com/agent.first.engage" target="_blank" rel="noopener" aria-label="what3words location: agent dot first dot engage"><span class="w3w-mark" aria-hidden="true">///</span><span class="w3w-words" data-w3w>agent.first.engage</span></a>
+        <a class="tlink" href="https://www-edc.eng.cam.ac.uk/" target="_blank" rel="noopener">EDC website</a>
+      </div>
+    </div>
+    <div class="small">
+      <span>© 2026 University of Cambridge</span>
+      <div>
+        <a href="https://www.cam.ac.uk/about-this-site/privacy-policy" target="_blank" rel="noopener">Privacy policy</a>
+        <a href="https://web-showcase.developers.cam.ac.uk/accessibility-statement" target="_blank" rel="noopener">Accessibility</a>
+        <a href="https://www.information-compliance.admin.cam.ac.uk/foi" target="_blank" rel="noopener">Freedom of information</a>
+        <a href="https://www.governanceandcompliance.admin.cam.ac.uk/governance-and-strategy/anti-slavery-and-anti-trafficking" target="_blank" rel="noopener">Modern slavery</a>
+        <a href="https://www.cam.ac.uk/about-this-site/terms-and-conditions" target="_blank" rel="noopener">Terms and conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  // The four colours stand for people, systems, design and risk. The colour for each word is a placeholder until checked against the report.
+  var FOUR = [
+    ['People', 'var(--pink)', 'Who a change affects, and what they need.'],
+    ['Systems', 'var(--blue)', 'How the parts connect and behave.'],
+    ['Design', 'var(--amber)', 'Requirements, options and measures.'],
+    ['Risk', 'var(--green)', 'What could go wrong, and how to manage it.']
+  ];
+  var UNITS = {
+    cert: [
+      ['Unit 1', 'Research Skills and Innovation', 'Healthcare innovation in the UK and worldwide, and the rules and ethics around it.', 'Healthcare systems, population health, health data, global health', 'Tom Bashford'],
+      ['Unit 2', 'Healthcare Technologies I', 'Biomaterials, biofabrication and sensors, with lab practicals.', 'Materials testing, microfluidics, ECG and wearables', 'Michael Sutcliffe'],
+      ['Unit 3', 'Healthcare Systems Improvement', 'Systems engineering applied to change in healthcare.', 'System mapping, risk (FMEA, SWIFT, bowtie), design requirements', 'John Clarkson']
+    ],
+    dip: [
+      ['Unit 4', 'Patient and Population Health', 'Public health methods for judging whether an innovation works at scale.', 'Epidemiology, biostatistics, health technology assessment', 'Kirsten Rennie'],
+      ['Unit 5', 'Healthcare Technologies II', 'Biomechanics, medical imaging and implantables.', 'Gait lab, machine learning in imaging, stents, cochlear implants', 'Saransh Sharma'],
+      ['Unit 6', 'Healthcare Systems Innovation', 'Taking a medical technology from concept to market.', 'Supply chains, behavioural economics, healthcare economics', 'Jagjit Singh Srai']
+    ],
+    mst: [
+      ['Project', 'Research dissertation', 'A 10,000 to 12,000 word dissertation on innovation in healthcare.', 'Monthly online supervision, two 2-day visits to Cambridge', 'Your project supervisor']
+    ]
+  };
+  var STAGES = [
+    { key: 'cert', h: 'PgCert', bg: 'var(--blue)', fg: 'var(--on-blue)', sub: 'Year 1<br>60 credits · 11 months part-time' },
+    { key: 'dip', h: 'PgDip', bg: 'var(--amber)', fg: 'var(--on-warm)', sub: 'Year 2<br>60 credits · 11 months part-time<br>Needs the PgCert' },
+    { key: 'mst', h: 'MSt', bg: 'var(--pink)', fg: 'var(--on-warm)', sub: 'Year 3<br>Master of Studies · 11 months part-time<br>Needs the PgDip' }
+  ];
+  var GROUPS = [
+    ['International Health Systems Group', 'https://www-edc.eng.cam.ac.uk/research/international-health-systems', 'Engineers and clinicians improving healthcare with partners worldwide, using systems thinking.'],
+    ['Health Systems Design Group', 'https://www-edc.eng.cam.ac.uk/research/health-systems-design', 'Bringing systems engineering into the UK health service for safer, more effective care.'],
+    ['Inclusive Design Group', 'https://www-edc.eng.cam.ac.uk/research/inclusive-design', 'Designing products and services for the full range of people who use them.'],
+    ['Sustainable Design Group', 'https://www-edc.eng.cam.ac.uk/research/sustainable-design', 'Delivering energy and material services with less resource use and environmental impact.'],
+    ['Intelligent Interactive Systems Group', 'https://www-edc.eng.cam.ac.uk/research/intelligent-interactive-systems', 'Interactive systems that help people be more creative and expressive.']
+  ];
+  var PARTNERS = [
+    ['Engineering Design Centre', 'https://www-edc.eng.cam.ac.uk/', 'Home of the Centre and these research groups.'],
+    ['Cambridge Public Health', 'https://www.cph.cam.ac.uk/', 'Public health research across the University.']
+  ];
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  $('four').innerHTML = FOUR.map(function (f) {
+    return '<li style="--c:' + f[1] + '"><b>' + f[0] + '</b><span>' + f[2] + '</span></li>';
+  }).join('');
+
+  $('stages').innerHTML = STAGES.map(function (s) {
+    var units = UNITS[s.key].map(function (u) {
+      return '<details class="unit"><summary><span class="n">' + u[0] + '</span><span class="t">' + esc(u[1]) + '</span></summary><div class="body"><p>' + esc(u[2]) + '</p><p><span class="k">Covers:</span> ' + esc(u[3]) + '</p><p><span class="k">Lead:</span> ' + esc(u[4]) + '</p></div></details>';
+    }).join('');
+    return '<div class="stage"><div><span class="badge" style="--bg:' + s.bg + ';--fg:' + s.fg + '">' + s.h + '</span><p class="sub">' + s.sub + '</p></div><div>' + units + '</div></div>';
+  }).join('');
+
+  var GROUP_LEADS = {};
+  function rows(list, leads) {
+    return list.map(function (g) {
+      var ext = g[1].charAt(0) !== '#', gl = leads && GROUP_LEADS[g[1].split('/').pop()];
+      return '<li><h3><a href="' + g[1] + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + ' style="text-decoration:none">' + esc(g[0]) + '</a></h3><span class="lead">' + esc(g[2]) + (gl && gl.length ? '<span class="gl"><b>Group lead</b>' + gl.map(function (m) {
+        var img = safeUrl(m.image);
+        return '<span class="gl-p"><span class="ph" style="--bg:' + m.c[0] + ';--fg:' + m.c[1] + '"><span aria-hidden="true">' + esc(initials(m.name).toUpperCase()) + '</span>' + (img ? '<img src="' + esc(img) + '" alt="" width="36" height="36">' : '') + '</span>' + esc(m.name) + '</span>';
+      }).join('') + '</span>' : '') + '</span></li>';
+    }).join('');
+  }
+  $('groups').innerHTML = rows(GROUPS, true);
+  $('partners').innerHTML = rows(PARTNERS);
+  // ---------- content files (content/*.md and the numbered files in content/news and content/sigs) ----------
+  var NOTICE = location.protocol === 'file:' ? ' Content files cannot load from a file address. Serve the folder (for example "python3 -m http.server") or upload it.' : '';
+  // Content is Markdown: a heading, "- key: value" bullets, then text. See content/README.md
+  function fetchText(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(url + ' ' + r.status); return r.text(); }); }
+  var textCache = {};
+  function getText(url) {
+    return textCache[url] || (textCache[url] = fetch(url).then(function (r) {
+      if (!r.ok) return null;
+      var ct = r.headers.get('content-type') || '';
+      return r.text().then(function (t) { return /html/i.test(ct) && /^\s*</.test(t) ? null : t; });
+    }).catch(function () { return null; }));
+  }
+  function slugify(v) { return String(v || '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+  function parseItem(chunk) {
+    var lines = chunk.replace(/\r\n?/g, '\n').split('\n'), i = 0, item = {}, key = null;
+    while (i < lines.length && !lines[i].trim()) i++;
+    var m = lines[i] && lines[i].match(/^#{1,6}\s+(.*\S)\s*$/);
+    if (m) { item.title = m[1]; i++; }
+    while (i < lines.length && !lines[i].trim()) i++;
+    for (; i < lines.length; i++) {
+      var kv = lines[i].match(/^[-*]\s+([A-Za-z_][\w-]*)\s*:\s*(.*)$/), sub = lines[i].match(/^\s{2,}[-*]\s+(.*\S)\s*$/);
+      if (kv) { key = kv[1].toLowerCase(); item[key] = kv[2].trim() === '' ? [] : kv[2].trim(); }
+      else if (sub && key && Array.isArray(item[key])) item[key].push(sub[1].trim());
+      else break;
+    }
+    Object.keys(item).forEach(function (k) { if (Array.isArray(item[k]) && !item[k].length) item[k] = ''; });
+    item.body = lines.slice(i).join('\n').trim();
+    return item;
+  }
+  function splitSections(text) {
+    var out = [], cur = null, fence = false;
+    text.replace(/\r\n?/g, '\n').split('\n').forEach(function (ln) {
+      if (/^(```|~~~)/.test(ln)) fence = !fence;
+      if (!fence && /^##\s+\S/.test(ln)) { cur = [ln]; out.push(cur); } else if (cur) cur.push(ln);
+    });
+    return out.map(function (c) { return c.join('\n'); });
+  }
+  function loadList(file) { return fetchText(file).then(function (t) { return splitSections(t).map(parseItem); }); }
+  // numbered files (content/news/001.md, 002.md, ...): the newest number is found without an index
+  function pad(n) { return n < 10 ? '00' + n : n < 100 ? '0' + n : String(n); }
+  var itemCache = {}, latestP = {};
+  function getNumbered(dir, n) {
+    var k = dir + '/' + n;
+    return itemCache[k] || (itemCache[k] = getText('content/' + dir + '/' + pad(n) + '.md').then(function (t) {
+      if (t === null) return null;
+      var it = parseItem(t); it.n = n; return it;
+    }));
+  }
+  function latestOf(dir) {
+    if (latestP[dir]) return latestP[dir];
+    function has(n) { return Promise.all([n, n + 1, n + 2].map(function (x) { return getNumbered(dir, x); })).then(function (r) { return r.some(Boolean); }); }
+    var lo = 0, hi = 1;
+    function up() { return has(hi).then(function (ok) { if (ok) { lo = hi; hi *= 2; return up(); } }); }
+    function bs() { if (hi - lo <= 1) return Promise.resolve(); var mid = (lo + hi) >> 1; return has(mid).then(function (ok) { if (ok) lo = mid; else hi = mid; return bs(); }); }
+    function scan(n, last, miss) { if (miss >= 3) return Promise.resolve(last); return getNumbered(dir, n).then(function (it) { return it ? scan(n + 1, n, 0) : scan(n + 1, last, miss + 1); }); }
+    return latestP[dir] = up().then(bs).then(function () { return scan(Math.max(1, lo), 0, 0); });
+  }
+  function many(v) { var a = Array.isArray(v) ? v : String(v || '').split(/[;,]/); return a.map(function (x) { return String(x).trim(); }).filter(Boolean); }
+  function semi(v) { var a = Array.isArray(v) ? v : String(v || '').split(';'); return a.map(function (x) { return String(x).trim(); }).filter(Boolean); }
+  function titleCase(v) { return v.replace(/-/g, ' ').replace(/\b[a-z]/g, function (c) { return c.toUpperCase(); }); }
+  function yes(v) { return /^(y|yes|true|1|x)$/i.test(v || ''); }
+  function safeUrl(u) { u = (u || '').trim(); return /^(javascript|data|vbscript):/i.test(u) ? '' : u; }
+  function isExt(u) { return /^https?:\/\//i.test(u); }
+  function extAttrs(u) { return isExt(u) ? ' target="_blank" rel="noopener"' : ''; }
+  function announce(scope) {
+    Array.prototype.forEach.call((scope || document).querySelectorAll('a[target="_blank"]'), function (a) {
+      if (!a.querySelector('.sr-nt')) { var s = document.createElement('span'); s.className = 'sr sr-nt'; s.textContent = ' (opens in a new tab)'; a.appendChild(s); }
+    });
+  }
+  function dropBroken() {
+    Array.prototype.forEach.call(document.querySelectorAll('.ph img, .faces img'), function (im) {
+      if (im.complete && im.naturalWidth === 0) { im.remove(); return; }
+      im.addEventListener('error', function () { im.remove(); });
+    });
+  }
+  function chipRow(label, opts, onChange, current) {
+    var row = document.createElement('div');
+    row.className = 'filterrow'; row.setAttribute('role', 'group'); row.setAttribute('aria-label', label);
+    row.innerHTML = '<span class="lab" aria-hidden="true">' + esc(label) + '</span><div class="chips-in">' + opts.map(function (o, i) {
+      return '<button class="chip" type="button" data-k="' + esc(o[0]) + '" aria-pressed="' + (current == null ? i === 0 : o[0] === current) + '">' + esc(o[1]) + '</button>';
+    }).join('') + '</div>';
+    row.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip'); if (!b) return;
+      Array.prototype.forEach.call(row.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
+      onChange(b.getAttribute('data-k'));
+    });
+    return row;
+  }
+  announce();
+
+  // people
+  var ROLE_LABELS = { leadership: 'Leadership', 'unit-lead': 'MSt unit leads', researcher: 'Researchers', staff: 'Staff' };
+  var COLOURS = [['var(--blue)', 'var(--on-blue)'], ['var(--amber)', 'var(--on-warm)'], ['var(--pink)', 'var(--on-warm)'], ['var(--green)', 'var(--on-warm)']];
+  function slugOf(url) { return url.replace(/\/$/, '').split('/').pop(); }
+  var GROUP_NAMES = {};
+  var GROUP_URLS = {};
+  GROUPS.forEach(function (g) { GROUP_NAMES[slugOf(g[1])] = g[0]; GROUP_URLS[slugOf(g[1])] = g[1]; });
+  var GROUP_ORDER = GROUPS.map(function (g) { return slugOf(g[1]); }), SIG_NAMES = {}, SIG_SHORT = {}, SIGS = [];
+  var PEOPLE = [], pf = { role: 'all', group: 'all', sig: 'all' };
+  function initials(n) {
+    var w = n.replace(/^(Professor|Prof|Dr|Mr|Mrs|Ms|Miss)\.?\s+/i, '').split(/\s+/).filter(Boolean);
+    return (w[0] ? w[0].charAt(0) : '') + (w[1] ? w[1].charAt(0) : '');
+  }
+  function noStop(t) { return t.replace(/[.\s]+$/, ''); }
+  function personCard(r) {
+    var c = COLOURS[PEOPLE.indexOf(r) % COLOURS.length];
+    var tagHtml = semi(r.groups).map(function (g) {
+      var gi = GROUP_ORDER.indexOf(g), col = COLOURS[(gi < 0 ? 0 : gi) % COLOURS.length][0], full = GROUP_NAMES[g] || titleCase(g);
+      var gu = GROUP_URLS[g], inner = '<i aria-hidden="true"></i><span class="sr">Research group: </span><span class="t">' + esc(full) + '</span>';
+      return '<li>' + (gu ? '<a class="tag-pill" href="' + esc(gu) + '"' + extAttrs(gu) + ' style="--c:' + col + '" title="' + esc(full) + '">' + inner + '</a>' : '<span class="tag-pill" style="--c:' + col + '" title="' + esc(full) + '">' + inner + '</span>') + '</li>';
+    }).concat(semi(r.sigs).map(function (s) {
+      var full = SIG_NAMES[s] || titleCase(s), sh = SIG_SHORT[s] || full;
+      return '<li><a class="tag-pill sig" href="#sig/' + esc(s) + '" title="' + esc(full) + '"><i aria-hidden="true"></i><span class="sr">Special interest group: </span><span class="t">' + esc(sh) + '</span></a></li>';
+    })).join('');
+    var img = safeUrl(r.image), url = safeUrl(r.profile_url);
+    var titles = semi(r.titles || r.blurb).map(noStop).filter(Boolean);
+    var foot = (tagHtml ? '<ul class="tags" aria-label="Groups">' + tagHtml + '</ul>' : '') + (url ? '<a class="tlink" style="justify-self:start" href="' + esc(url) + '"' + extAttrs(url) + '>Profile<span class="sr"> of ' + esc(r.name) + '</span></a>' : '');
+    return '<article class="person"><div class="who"><div class="ph" style="--bg:' + c[0] + ';--fg:' + c[1] + '"><span aria-hidden="true">' + esc(initials(r.name).toUpperCase()) + '</span>' + (img ? '<img src="' + esc(img) + '" alt="" width="96" height="96">' : '') + '</div><div><h3>' + esc(r.name) + '</h3></div></div>' + (r.subtitle ? '<p class="role">' + esc(noStop(r.subtitle)) + '</p>' : '') + (titles.length ? '<ul class="titles">' + titles.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') + '<div class="foot-row">' + foot + '</div></article>';
+  }
+  function drawPeople() {
+    var shown = PEOPLE.filter(function (r) {
+      return (pf.role === 'all' || semi(r.category).indexOf(pf.role) > -1) && (pf.group === 'all' || semi(r.groups).indexOf(pf.group) > -1) && (pf.sig === 'all' || semi(r.sigs).indexOf(pf.sig) > -1);
+    });
+    $('people-grid').innerHTML = shown.length ? shown.map(personCard).join('') : '<p class="note">No one matches those filters.</p>';
+    $('people-status').textContent = 'Showing ' + shown.length + ' of ' + PEOPLE.length + ' people';
+    dropBroken(); announce($('people-grid'));
+  }
+  function initPeople(data) {
+    PEOPLE = data.filter(function (r) { return r.name; }).sort(function (a, b) {
+      var x = parseFloat(a.order), y = parseFloat(b.order);
+      x = isNaN(x) ? 1e9 : x; y = isNaN(y) ? 1e9 : y;
+      return (x - y) || a.name.localeCompare(b.name);
+    });
+    var roles = [], groups = [], sigs = [];
+    PEOPLE.forEach(function (r) {
+      semi(r.category).forEach(function (c) { if (roles.indexOf(c) < 0) roles.push(c); });
+      semi(r.groups).forEach(function (g) { if (groups.indexOf(g) < 0) groups.push(g); });
+      semi(r.sigs).forEach(function (g) { if (sigs.indexOf(g) < 0) sigs.push(g); });
+    });
+    var known = Object.keys(ROLE_LABELS), gOrder = GROUPS.map(function (g) { return slugOf(g[1]); });
+    roles = known.filter(function (k) { return roles.indexOf(k) > -1; }).concat(roles.filter(function (k) { return known.indexOf(k) < 0; }));
+    groups = gOrder.filter(function (k) { return groups.indexOf(k) > -1; }).concat(groups.filter(function (k) { return gOrder.indexOf(k) < 0; }));
+    var box = $('people-filters'); box.innerHTML = '';
+    if (roles.length > 1) box.appendChild(chipRow('Role', [['all', 'Everyone']].concat(roles.map(function (k) { return [k, ROLE_LABELS[k] || titleCase(k)]; })), function (k) { pf.role = k; drawPeople(); }));
+    if (groups.length) box.appendChild(chipRow('Research group', [['all', 'All groups']].concat(groups.map(function (k) { return [k, GROUP_NAMES[k] || titleCase(k)]; })), function (k) { pf.group = k; drawPeople(); }));
+    if (sigs.length) box.appendChild(chipRow('Special interest group', [['all', 'All SIGs']].concat(sigs.map(function (k) { return [k, SIG_SHORT[k] || SIG_NAMES[k] || titleCase(k)]; })), function (k) { pf.sig = k; drawPeople(); }));
+    drawPeople();
+    $('home-faces').innerHTML = PEOPLE.filter(function (r) { return safeUrl(r.image); }).slice(0, 7).map(function (r) { return '<img src="' + esc(safeUrl(r.image)) + '" alt="">'; }).join('');
+    dropBroken();
+  }
+  function isPast(r) { return /past/i.test(r.status || r.type || ''); }
+  function sigYears(r) { return r.from && r.until ? r.from + '\u2013' + r.until : (r.until ? (isPast(r) ? '' : 'Until ') + r.until : (r.from ? 'Since ' + r.from : '')); }
+  function sigKind(r) { var y = sigYears(r); return isPast(r) ? 'Past' + (y ? ' \u00b7 ' + y : '') : y; }
+  function drawSigs() {
+    var box = $('sigs'), act = SIGS.filter(function (r) { return !isPast(r); }), past = SIGS.filter(isPast);
+    if (!act.length) box.innerHTML = '<p class="note">Special interest groups will be listed here.</p>';
+    else box.innerHTML = act.map(function (r, i) {
+      var c = COLOURS[i % COLOURS.length][0];
+      var members = PEOPLE.filter(function (m) { return semi(m.sigs).indexOf(r.slug) > -1; });
+      var faces = members.filter(function (m) { return safeUrl(m.image); }).slice(0, 6).map(function (m) { return '<img src="' + esc(safeUrl(m.image)) + '" alt="">'; }).join('');
+      return '<article class="sig-card" style="--c:' + c + '">' + (sigKind(r) ? '<span class="kind">' + esc(sigKind(r)) + '</span>' : '') + '<h3><a href="#sig/' + esc(r.slug) + '">' + esc(r.name) + '</a></h3>' + (r.summary ? '<p>' + esc(r.summary) + '</p>' : '') + (r.project ? '<p class="proj"><b>Project:</b> ' + esc(r.project) + '</p>' : '') + (members.length ? '<div class="row"><span class="faces" aria-hidden="true">' + faces + '</span><span>' + members.length + (members.length === 1 ? ' member' : ' members') + '</span></div>' : '') + '</article>';
+    }).join('');
+    $('sigs-past').hidden = !past.length;
+    $('past-list').innerHTML = past.map(function (r) { var y = sigYears(r); return '<li><a href="#sig/' + esc(r.slug) + '">' + esc(r.name) + '</a>' + (y ? '<span>' + esc(y.charAt(0).toUpperCase() + y.slice(1)) + '</span>' : '') + (r.summary ? '<p>' + esc(r.summary) + '</p>' : '') + '</li>'; }).join('');
+    dropBroken();
+  }
+  function loadSigs() {
+    return latestOf('sigs').then(function (L) {
+      var nums = []; for (var n = 1; n <= L; n++) nums.push(n);
+      return Promise.all(nums.map(function (n) { return getNumbered('sigs', n); }));
+    }).then(function (items) {
+      return items.filter(function (it) { return it && it.title; }).map(function (it) {
+        it.name = it.title; it.slug = slugify(it.short || it.name); return it;
+      });
+    });
+  }
+  function normList(v, lookup) { return many(v).map(function (x) { var k = slugify(x); return lookup[k] || k; }); }
+  var dataP = Promise.all([loadList('content/people.md'), loadSigs()]).then(function (res) {
+    SIGS = res[1];
+    var sigLookup = {}, groupLookup = {};
+    SIGS.forEach(function (r) { SIG_NAMES[r.slug] = r.name; if (r.short) SIG_SHORT[r.slug] = r.short; sigLookup[slugify(r.name)] = r.slug; sigLookup[r.slug] = r.slug; });
+    GROUPS.forEach(function (g) { var k = slugOf(g[1]); groupLookup[k] = k; groupLookup[slugify(g[0])] = k; groupLookup[slugify(g[0]).replace(/-group$/, '')] = k; });
+    var people = res[0].map(function (r) {
+      r.name = r.title; r.groups = normList(r.groups, groupLookup); r.sigs = normList(r.sigs, sigLookup); r.category = many(r.category).map(slugify); return r;
+    });
+    people.forEach(function (r) {
+      normList(r.leads, groupLookup).forEach(function (k) { (GROUP_LEADS[k] = GROUP_LEADS[k] || []).push({ name: r.name, image: r.image, c: COLOURS[people.indexOf(r) % COLOURS.length] }); });
+    });
+    $('groups').innerHTML = rows(GROUPS, true);
+    initPeople(people); drawSigs(); return true;
+  }).catch(function () {
+    $('people-grid').innerHTML = '<p class="note">People could not be loaded.' + esc(NOTICE) + '</p>';
+    $('sigs').innerHTML = '<p class="note">Special interest groups could not be loaded.' + esc(NOTICE) + '</p>';
+    return false;
+  });
+
+  // news
+  var NEWS = [], nf = 'all', newsNext = null, newsMore = true, newsBusy = Promise.resolve();
+  function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function fmtDate(iso) { var d = new Date((iso || '') + 'T12:00:00'); return isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); }
+  function newsVisible(it) { return it && it.title && !yes(it.hidden) && (!it.date || it.date <= today()); }
+  // loads news from the highest number downwards until `target` items are showing
+  function newsEnsure(target) {
+    function step() {
+      if (NEWS.length >= target || !newsMore) return Promise.resolve();
+      return latestOf('news').then(function (L) {
+        if (newsNext === null) newsNext = L;
+        var nums = []; for (var n = newsNext; n >= 1 && nums.length < 6; n--) nums.push(n);
+        if (!nums.length) { newsMore = false; return; }
+        newsNext = nums[nums.length - 1] - 1; if (newsNext < 1) newsMore = false;
+        return Promise.all(nums.map(function (n) { return getNumbered('news', n); })).then(function (items) {
+          items.forEach(function (it) { if (newsVisible(it)) NEWS.push(it); });
+          return step();
+        });
+      });
+    }
+    return (newsBusy = newsBusy.then(step));
+  }
+  function newsHref(r) { return safeUrl(r.link) || ('#news/' + r.n); }
+  function newsTag(r) { return [r.tag, r.when || fmtDate(r.date)].filter(Boolean).join(' \u2022 '); }
+  function articleMeta(r) {
+    var parts = [], d = fmtDate(r.date);
+    if (r.tag) parts.push(esc(r.tag));
+    if (d) parts.push('<time datetime="' + esc(r.date) + '">' + esc(d) + '</time>');
+    if (r.when) parts.push(esc(r.when));
+    return parts.join(' <span aria-hidden="true">\u2022</span> ');
+  }
+  function thumb(r) { var u = safeUrl(r.image); return u ? '<img class="thumb" src="' + esc(u) + '" alt="' + esc(r.image_alt || '') + '">' : ''; }
+  function newsItem(r, full) {
+    var h = newsHref(r), tag = newsTag(r);
+    return '<a class="news-item" href="' + esc(h) + '"' + extAttrs(h) + '><div class="nbody">' + (tag ? '<span class="tag">' + esc(tag) + '</span>' : '') + '<h3>' + esc(r.title) + '</h3>' + (full && r.summary ? '<p class="sum">' + esc(r.summary) + '</p>' : '') + '</div>' + thumb(r) + '</a>';
+  }
+  function newsFeature(r) {
+    var h = newsHref(r), tag = newsTag(r);
+    return '<a class="news-feature' + (safeUrl(r.image) ? ' has-img' : '') + '" href="' + esc(h) + '"' + extAttrs(h) + '><span class="tag">' + esc(tag) + '</span><div class="nf-txt"><h3>' + esc(r.title) + '</h3>' + (r.summary ? '<p>' + esc(r.summary) + '</p>' : '') + '</div><span class="row"><span class="arr" aria-hidden="true"></span></span>' + thumb(r) + '</a>';
+  }
+  function drawNews() {
+    var shown = NEWS.filter(function (r) { return nf === 'all' || r.tag === nf; });
+    $('news-grid').innerHTML = shown.length ? shown.map(function (r) { return newsItem(r, true); }).join('') : '<p class="note">' + (NEWS.length ? 'Nothing under that topic yet.' : 'No news yet.') + esc(NEWS.length || location.protocol !== 'file:' ? '' : NOTICE) + '</p>';
+    $('news-status').textContent = 'Showing ' + shown.length + ' of ' + NEWS.length + ' items' + (newsMore ? ' so far' : '');
+    $('news-more').hidden = !newsMore;
+    announce($('news-grid'));
+  }
+  function buildTopics() {
+    var tags = [];
+    NEWS.forEach(function (r) { if (r.tag && tags.indexOf(r.tag) < 0) tags.push(r.tag); });
+    var fb = $('news-filters'); fb.innerHTML = '';
+    if (tags.length > 1) fb.appendChild(chipRow('Topic', [['all', 'All']].concat(tags.map(function (t) { return [t, t]; })), function (k) { nf = k; drawNews(); }, nf));
+  }
+  function refreshNews() { buildTopics(); drawNews(); }
+  function drawHomeNews() {
+    var box = $('home-news'), data = NEWS.slice(0, 5);
+    if (!data.length) { box.innerHTML = '<p class="note">No news yet.' + esc(location.protocol === 'file:' ? NOTICE : '') + '</p>'; return; }
+    var feat = data.filter(function (r) { return yes(r.featured); })[0] || data[0];
+    box.innerHTML = newsFeature(feat) + data.filter(function (r) { return r !== feat; }).slice(0, 2).map(function (r) { return newsItem(r, false); }).join('');
+    announce(box);
+  }
+  // events: one section per event in content/events.md, each linking to an outside page (Luma). Past events drop off by themselves.
+  function fmtRange(a, b) {
+    var d1 = new Date(a + 'T12:00:00'), d2 = new Date((b || '') + 'T12:00:00');
+    if (isNaN(d1.getTime())) return '';
+    if (!b || b <= a || isNaN(d2.getTime())) return fmtDate(a);
+    if (d1.getFullYear() === d2.getFullYear()) {
+      if (d1.getMonth() === d2.getMonth()) return d1.getDate() + '\u2013' + d2.getDate() + ' ' + d2.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      return d1.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }) + ' \u2013 ' + fmtDate(b);
+    }
+    return fmtDate(a) + ' \u2013 ' + fmtDate(b);
+  }
+  function drawEvents(list) {
+    var t = today();
+    var ev = list.filter(function (r) {
+      var ok = r.title && !yes(r.hidden) && /^\d{4}-\d{2}-\d{2}$/.test(r.date || '') && safeUrl(r.link);
+      if (r.title && !ok && !yes(r.hidden) && window.console) console.warn('Event skipped, it needs a date (YYYY-MM-DD) and a link: ' + r.title);
+      return ok && (r.end_date && r.end_date >= r.date ? r.end_date : r.date) >= t;
+    }).sort(function (a, b) { return a.date.localeCompare(b.date); }).slice(0, 4).map(function (r) {
+      return { title: r.title, summary: r.summary, image: r.image, image_alt: r.image_alt, link: r.link, tag: fmtRange(r.date, r.end_date), place: [[r.start_time, r.end_time].filter(Boolean).join(' \u2013 '), r.location].filter(Boolean).join(' \u2022 ') };
+    });
+    var sec = $('events'), box = $('home-events');
+    if (!ev.length) { sec.hidden = true; return; }
+    box.className = 'ev-grid' + (ev.length === 1 ? ' n1' : '');
+    box.innerHTML = ev.map(function (r, i) {
+      var u = safeUrl(r.image), c = COLOURS[i % COLOURS.length][0], h = safeUrl(r.link);
+      return '<a class="ev-card' + (u ? '' : ' noimg') + '" style="--c:' + c + '" href="' + esc(h) + '"' + extAttrs(h) + '>' + (u ? '<img class="ev-img" src="' + esc(u) + '" alt="' + esc(r.image_alt || '') + '">' : '') + '<div class="ev-txt"><span class="when">' + esc(r.tag) + '</span>' + (r.place ? '<span class="when where">' + esc(r.place) + '</span>' : '') + '<h3>' + esc(r.title) + '</h3>' + (r.summary ? '<p>' + esc(r.summary) + '</p>' : '') + '<span class="go" aria-hidden="true"><span class="arr"></span></span></div></a>';
+    }).join('');
+    announce(box); sec.hidden = false;
+  }
+  function stripe() {
+    var n = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('#p-home > .band'), function (b) {
+      if (b.hidden) return;
+      b.classList.toggle('tint', n++ % 2 === 1);
+    });
+  }
+  loadList('content/events.md').then(drawEvents).catch(function () {}).then(stripe);
+  // site-wide details (content/site.md): the footer social links and the what3words address
+  getText('content/site.md').then(function (t) {
+    if (!t) return;
+    var it = parseItem(t);
+    [['f-linkedin', it.linkedin], ['f-x', it.x]].forEach(function (p) {
+      var a = $(p[0]), u = safeUrl(p[1]);
+      if (a) { if (u) a.href = u; else a.closest('li').hidden = true; }
+    });
+    var ws = String(it.what3words || '').replace(/^\/+/, '').trim().toLowerCase();
+    if (/^[a-z]+\.[a-z]+\.[a-z]+$/.test(ws)) {
+      Array.prototype.forEach.call(document.querySelectorAll('.w3w'), function (a) {
+        a.href = 'https://what3words.com/' + ws;
+        a.setAttribute('aria-label', 'what3words location: ' + ws.split('.').join(' dot '));
+        a.querySelector('[data-w3w]').textContent = ws;
+      });
+    }
+  });
+  $('news-more').addEventListener('click', function () { newsEnsure(NEWS.length + 12).then(refreshNews); });
+  newsEnsure(5).then(function () { drawHomeNews(); refreshNews(); }).catch(function () {
+    $('home-news').innerHTML = '<p class="note">News could not be loaded.' + esc(NOTICE) + '</p>';
+    $('news-grid').innerHTML = '<p class="note">News could not be loaded.' + esc(NOTICE) + '</p>';
+  });
+
+  // testimonials
+  function drawQuotes(data) {
+    ['student', 'industry'].forEach(function (g) {
+      var list = data.filter(function (r) { return r.quote && (r.group || 'student').toLowerCase() === g; }).sort(function (a, b) {
+        var x = parseFloat(a.order), y = parseFloat(b.order); x = isNaN(x) ? 1e9 : x; y = isNaN(y) ? 1e9 : y; return x - y;
+      });
+      var box = $('quotes-' + g);
+      box.innerHTML = list.map(function (r, i) {
+        var c = COLOURS[i % COLOURS.length][0];
+        return '<figure class="quote" style="--c:' + c + '"><blockquote>' + r.quote.split(/\n\s*\n/).map(function (x) { return '<p>' + esc(x.trim()) + '</p>'; }).join('') + '</blockquote><figcaption>' + (r.name ? '<b>' + esc(r.name) + '</b>' : '') + (r.role ? '<span>' + esc(r.role) + '</span>' : '') + '</figcaption></figure>';
+      }).join('');
+      var h = box.previousElementSibling; if (h) h.hidden = !list.length;
+    });
+  }
+  loadList('content/testimonials.md').then(function (list) {
+    return list.map(function (r) { r.name = /^anonymous$/i.test(r.title) ? '' : r.title; r.quote = r.body; return r; });
+  }).then(drawQuotes).catch(function () {
+    $('quotes-student').innerHTML = '<p class="note">Testimonials could not be loaded.' + esc(NOTICE) + '</p>';
+    $('quotes-industry').previousElementSibling.hidden = true;
+  });
+
+  // articles: markdown is fetched only when an article is opened
+  var MARKED = 'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js';
+  var PURIFY = 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js';
+  var libsP;
+  function loadScript(src) { return new Promise(function (res, rej) { var el = document.createElement('script'); el.src = src; el.onload = res; el.onerror = function () { rej(new Error('script')); }; document.head.appendChild(el); }); }
+  function mdLibs() { return libsP || (libsP = Promise.all([loadScript(MARKED), loadScript(PURIFY)])); }
+  function plainMd(t) { return t.split(/\n\s*\n/).map(function (x) { return '<p>' + esc(x.trim()) + '</p>'; }).join(''); }
+  function renderMd(text) {
+    return mdLibs().then(function () {
+      return window.DOMPurify.sanitize(window.marked.parse(text), { FORBID_TAGS: ['style', 'iframe', 'form', 'input', 'button'], FORBID_ATTR: ['style'] });
+    }, function () { return plainMd(text); });
+  }
+  function tidy(box, base) {
+    var hs = Array.prototype.slice.call(box.querySelectorAll('h1,h2,h3,h4,h5,h6')), min = 6;
+    hs.forEach(function (h) { min = Math.min(min, +h.tagName.charAt(1)); });
+    hs.forEach(function (h) {
+      var n = Math.min(6, Math.max(2, +h.tagName.charAt(1) - min + 2));
+      var el = document.createElement('h' + n); el.innerHTML = h.innerHTML; h.parentNode.replaceChild(el, h);
+    });
+    Array.prototype.forEach.call(box.querySelectorAll('img'), function (im) {
+      var src = im.getAttribute('src') || '';
+      if (!/^(https?:|\/|data:)/i.test(src)) im.setAttribute('src', (base || 'content/news/') + src.replace(/^\.\//, ''));
+      im.setAttribute('loading', 'lazy');
+    });
+    Array.prototype.forEach.call(box.querySelectorAll('a[href]'), function (a) {
+      if (isExt(a.getAttribute('href'))) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+    });
+    announce(box);
+  }
+  function openArticle(slug) {
+    var h1 = $('article-title'), body = $('article-body'), meta = $('article-meta');
+    h1.textContent = 'Loading'; meta.textContent = ''; body.innerHTML = '';
+    function fail() {
+      h1.textContent = 'Article not found';
+      body.innerHTML = '<p>That article could not be loaded.' + esc(NOTICE) + '</p>';
+      document.title = 'News \u00b7 Cambridge Centre for Healthcare Innovation';
+    }
+    var n = /^\d{1,4}$/.test(slug) ? parseInt(slug, 10) : 0;
+    if (!n) { fail(); return; }
+    getNumbered('news', n).then(function (r) {
+      if (!newsVisible(r) || r.link) { fail(); return; }
+      return renderMd(r.body).then(function (html) {
+        h1.textContent = r.title; meta.innerHTML = articleMeta(r);
+        document.title = r.title + ' \u00b7 Cambridge Centre for Healthcare Innovation';
+        body.innerHTML = html; tidy(body, 'content/news/');
+        var u = safeUrl(r.image);
+        if (u) body.insertAdjacentHTML('afterbegin', '<img src="' + esc(u) + '" alt="' + esc(r.image_alt || '') + '">');
+      });
+    }).catch(fail);
+  }
+  function openSig(slug) {
+    var h1 = $('sig-title'), body = $('sig-body'), team = $('sig-team');
+    h1.textContent = 'Loading'; $('sig-kind').textContent = ''; $('sig-sum').textContent = ''; $('sig-meta').innerHTML = ''; body.innerHTML = ''; body.hidden = false; team.hidden = true;
+    function fail() {
+      h1.textContent = 'Group not found'; $('sig-sum').textContent = 'That special interest group could not be loaded.' + NOTICE;
+      document.title = 'Special interest group \u00b7 Cambridge Centre for Healthcare Innovation';
+    }
+    if (!/^[a-z0-9-]+$/i.test(slug)) { fail(); return; }
+    dataP.then(function (ok) {
+      var r = ok && SIGS.filter(function (x) { return x.slug === slug; })[0];
+      if (!r) { fail(); return; }
+      h1.textContent = r.name; $('sig-kind').textContent = sigKind(r) || 'Special interest group'; $('sig-sum').textContent = r.summary || '';
+      document.title = r.name + ' \u00b7 Cambridge Centre for Healthcare Innovation';
+      var url = safeUrl(r.url), meta = '';
+      if (r.project) meta += '<div><dt>Project</dt><dd>' + esc(r.project) + '</dd></div>';
+      if (url) meta += '<div><dt>More</dt><dd><a class="tlink" href="' + esc(url) + '"' + extAttrs(url) + '>Group website</a></dd></div>';
+      $('sig-meta').innerHTML = meta; announce($('sig-meta'));
+      var members = PEOPLE.filter(function (m) { return semi(m.sigs).indexOf(r.slug) > -1; });
+      if (members.length) {
+        $('sig-members').innerHTML = members.map(function (m) {
+          var c = COLOURS[PEOPLE.indexOf(m) % COLOURS.length], img = safeUrl(m.image), u = safeUrl(m.profile_url);
+          var inner = '<span class="ph" style="--bg:' + c[0] + ';--fg:' + c[1] + '"><span aria-hidden="true">' + esc(initials(m.name).toUpperCase()) + '</span>' + (img ? '<img src="' + esc(img) + '" alt="">' : '') + '</span><span><b>' + esc(m.name) + '</b>' + (m.subtitle ? '<small>' + esc(noStop(m.subtitle)) + '</small>' : '') + '</span>';
+          return '<li>' + (u ? '<a class="member" href="' + esc(u) + '"' + extAttrs(u) + '>' + inner + '</a>' : '<div class="member">' + inner + '</div>') + '</li>';
+        }).join('');
+        team.hidden = false; announce(team); dropBroken();
+      }
+      if (!r.body) { body.hidden = true; return; }
+      return renderMd(r.body).then(function (html) { body.innerHTML = html; tidy(body, 'content/sigs/'); });
+    });
+  }
+
+  // copy buttons
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.copy'); if (!b) return;
+    var node = $(b.getAttribute('data-copy'));
+    function pick() { var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected'; }
+    try { navigator.clipboard.writeText(node.textContent).then(function () { b.textContent = 'Copied'; }, pick); } catch (err) { pick(); }
+    setTimeout(function () { b.textContent = 'Copy'; }, 1800);
+  });
+
+  // menu
+  var menuBtn = $('menu-btn'), nav = $('nav');
+  menuBtn.addEventListener('click', function () { var o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); } });
+
+  // background film inside the big X on the home page: wide screens only, and only when motion and data are welcome. The static X stays as the fallback.
+  (function () {
+    var v = $('flag-vid');
+    if (!v || !window.matchMedia) return;
+    var conn = navigator.connection || {};
+    if (!matchMedia('(min-width: 761px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches || conn.saveData) { v.remove(); return; }
+    var src = v.canPlayType('video/mp4; codecs="avc1.42E01E"') ? v.getAttribute('data-mp4') : (v.canPlayType('video/webm; codecs="vp9"') ? v.getAttribute('data-webm') : '');
+    if (!src) { v.remove(); return; }
+    var card = v.parentNode, triedBlob = false;
+    function drop() { v.classList.remove('on'); card.classList.remove('vid'); v.remove(); }
+    v.addEventListener('playing', function () { v.classList.add('on'); card.classList.add('vid'); });
+    // some hosts refuse media loaded by address but allow it as a downloaded blob, so try that once before giving up
+    v.addEventListener('error', function () {
+      if (triedBlob || !window.fetch || !window.URL || !URL.createObjectURL) { drop(); return; }
+      triedBlob = true;
+      fetch(src).then(function (r) { if (!r.ok) throw 0; return r.blob(); }).then(function (bl) { v.src = URL.createObjectURL(bl); go(); }).catch(drop);
+    });
+    v.src = src; v.muted = true;
+    function go() { var p = v.play(); if (p && p.catch) p.catch(function (e) { if (e && e.name === 'NotAllowedError') drop(); }); }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) go(); else v.pause(); }); }).observe(v);
+    } else go();
+  })();
+
+  // the X as the tab icon, where the page is not served with its own head (the hosted page sets these in its head)
+  try {
+    if (!document.querySelector('link[rel~="icon"][href*="favicon"]')) {
+      [['icon', 'img/favicon.svg', 'image/svg+xml'], ['apple-touch-icon', 'img/apple-touch-icon.png', '']].forEach(function (l) {
+        var k = document.createElement('link'); k.rel = l[0]; k.href = l[1]; if (l[2]) k.type = l[2]; document.head.appendChild(k);
+      });
+    }
+  } catch (e) {}
+
+  // theme toggle (light by default)
+  var root = document.documentElement, themeBtn = $('theme');
+  function effective() { return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+  function sync() { var d = effective() === 'dark', t = d ? 'Light mode' : 'Dark mode'; themeBtn.setAttribute('aria-label', 'Switch to ' + t.toLowerCase()); themeBtn.querySelector('.tt').textContent = t; }
+  var saved = 'light'; try { saved = localStorage.getItem('chi-theme') === 'dark' ? 'dark' : 'light'; } catch (e) {}
+  root.setAttribute('data-theme', saved);
+  sync();
+  themeBtn.addEventListener('click', function () {
+    var next = effective() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('chi-theme', next); } catch (e) {}
+    sync();
+  });
+
+  // router
+  var PAGES = ['home', 'research', 'education', 'cebc', 'people', 'news', 'article', 'sig', 'contact'];
+  var first = true;
+  function route() {
+    var parts = ((location.hash || '').replace('#', '') || 'home').split('/'), h = parts[0];
+    if (h === 'content') return;
+    var page = (h === 'apply' || h === 'programme' || h === 'mst') ? 'education' : (h === 'news' && parts[1] ? 'article' : (h === 'sig' ? (parts[1] ? 'sig' : 'research') : (PAGES.indexOf(h) > -1 && h !== 'article' ? h : 'home')));
+    PAGES.forEach(function (p) { $('p-' + p).hidden = p !== page; });
+    Array.prototype.forEach.call(nav.querySelectorAll('a[data-route]'), function (a) {
+      if (a.getAttribute('data-route') === (page === 'article' ? 'news' : (page === 'sig' ? 'research' : page))) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    var sec = $('p-' + page);
+    document.title = (page === 'home' ? '' : sec.getAttribute('data-title') + ' · ') + 'Cambridge Centre for Healthcare Innovation';
+    if (h === 'apply') { $('applying').scrollIntoView(); $('applying').querySelector('h2').setAttribute('tabindex', '-1'); $('applying').querySelector('h2').focus({ preventScroll: true }); first = false; return; }
+    window.scrollTo(0, 0);
+    if (page === 'article') { var slug = ''; try { slug = decodeURIComponent(parts[1]); } catch (e) {} openArticle(slug); }
+    if (page === 'news') newsEnsure(12).then(refreshNews);
+    if (page === 'sig') { var sl = ''; try { sl = decodeURIComponent(parts[1]); } catch (e) {} openSig(sl); }
+    if (!first) { var h1 = sec.querySelector('h1'); h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
+    first = false;
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
