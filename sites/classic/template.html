@@ -361,6 +361,12 @@ a.tag-pill:hover { background: var(--ink); color: var(--paper); }
 .past-list span { grid-column: 3; grid-row: 1; text-align: right; color: var(--mute); font-size: 0.88rem; white-space: nowrap; }
 @media (max-width: 700px) { .past-list li { grid-template-columns: minmax(0, 1fr) auto; } .past-list li p { grid-column: 1 / -1; grid-row: 2; } .past-list span { grid-column: 2; } }
 .sig-wrap .lede { max-width: 56ch; margin: 0; }
+.article-wrap h1.sig-logo-h1 { max-width: none; font-size: 1rem; line-height: 0; }
+.sig-logo { display: block; width: auto; height: auto; max-width: min(100%, 34rem); max-height: clamp(7rem, 22vw, 13rem); }
+.sig-logo.dk { display: none; }
+:root[data-theme="dark"] .sig-logo.lt.has-dk { display: none; }
+:root[data-theme="dark"] .sig-logo.dk { display: block; }
+:root[data-theme="dark"] .sig-logo.plate { background: #f3f6f2; padding: 0.9rem 1.2rem; border-radius: 14px; }
 .sig-wrap .tag::before { content: ""; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 2px; background: var(--pink); rotate: 45deg; margin-right: 0.7em; }
 .sig-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2.4rem; margin: 0.4rem 0 0; }
 .sig-meta div { display: grid; gap: 0.1rem; }
@@ -1287,7 +1293,7 @@ a.member[target="_blank"]::after { content: none; }
   }
   function openSig(slug) {
     var h1 = $('sig-title'), body = $('sig-body'), team = $('sig-team');
-    h1.textContent = 'Loading'; $('sig-kind').textContent = ''; $('sig-sum').textContent = ''; $('sig-meta').innerHTML = ''; body.innerHTML = ''; body.hidden = false; team.hidden = true;
+    h1.textContent = 'Loading'; h1.className = ''; $('sig-kind').textContent = ''; $('sig-sum').textContent = ''; $('sig-meta').innerHTML = ''; body.innerHTML = ''; body.hidden = false; team.hidden = true;
     function fail() {
       h1.textContent = 'Group not found'; $('sig-sum').textContent = 'That special interest group could not be loaded.' + NOTICE;
       document.title = 'Special interest group \u00b7 Cambridge Centre for Healthcare Innovation';
@@ -1296,7 +1302,13 @@ a.member[target="_blank"]::after { content: none; }
     dataP.then(function (ok) {
       var r = ok && SIGS.filter(function (x) { return x.slug === slug; })[0];
       if (!r) { fail(); return; }
-      h1.textContent = r.name; $('sig-kind').textContent = sigKind(r) || 'Special interest group'; $('sig-sum').textContent = r.summary || '';
+      h1.textContent = r.name; h1.className = '';
+      var lg = safeUrl(r.logo);
+      if (lg) {
+        var dk = safeUrl(r.logo_dark), lalt = esc(r.logo_alt || r.name);
+        h1.className = 'sig-logo-h1';
+        h1.innerHTML = '<img class="sig-logo lt' + (dk ? ' has-dk' : ' plate') + '" src="' + esc(lg) + '" alt="' + lalt + '">' + (dk ? '<img class="sig-logo dk" src="' + esc(dk) + '" alt="' + lalt + '">' : '');
+      } $('sig-kind').textContent = sigKind(r) || 'Special interest group'; $('sig-sum').textContent = r.summary || '';
       document.title = r.name + ' \u00b7 Cambridge Centre for Healthcare Innovation';
       var url = safeUrl(r.url), meta = '';
       if (r.project) meta += '<div><dt>Project</dt><dd>' + esc(r.project) + '</dd></div>';

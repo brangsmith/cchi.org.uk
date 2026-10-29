@@ -117,6 +117,9 @@ A new special interest group, as the next number in `sigs/`:
 - until:
 - project:
 - url:
+- logo:
+- logo_dark:
+- logo_alt:
 
 The text of the group's page.
 ```
@@ -223,6 +226,9 @@ One numbered file per special interest group, in the same way as news: `001.md`,
 | until | Optional end year. Shown as "Until 2027", or "2025–2027" with a start year. Nothing is shown if both are left out |
 | project | Optional. The project the group is linked to |
 | url | Optional. Link to an outside website for the group. Opens in a new tab |
+| logo | Optional. The group's logo, shown in place of the title at the top of its page. Use a picture with a transparent background (PNG or WebP). Path from the top of the site, for example `content/sigs/003/scan-logo.webp` |
+| logo_dark | Optional. A second version of the logo for dark mode, with light-coloured lettering. Without one, dark mode shows the logo on a pale tile |
+| logo_alt | The words in the logo, for screen readers, for example `SCAN: Spatial Computing Assisted Neuronavigation`. Without one the group's name is used |
 
 The team on a group's page, and the faces and count on its card, come from the `sigs` detail in `people.md`. A person is matched by the group's short name or full name, so `SCAN` and `Spatial Computing Assisted Neuronavigation` both work.
 
